@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
 import edu.wpi.first.wpilibj.templates.subsystems.Hopper;
 import edu.wpi.first.wpilibj.templates.subsystems.Lifter;
 import edu.wpi.first.wpilibj.templates.subsystems.ScooperCollector;
+import edu.wpi.first.wpilibj.templates.subsystems.TheShifter;
 import edu.wpi.first.wpilibj.templates.subsystems.Tracking;
 
 
@@ -28,6 +29,7 @@ public abstract class CommandBase extends Command {
     public static Lifter theLifter = new Lifter ();
     public static ScooperCollector theScooperCollector = new ScooperCollector ();
     public static Tracking theTracking = new Tracking ();
+    public static TheShifter theShifter = new TheShifter();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

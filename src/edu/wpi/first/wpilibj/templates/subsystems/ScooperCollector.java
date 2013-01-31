@@ -4,7 +4,10 @@
  */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
@@ -13,6 +16,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class ScooperCollector extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    Talon colectorTalon1 = RobotMap.colectorTalon1;
+    Talon colectorTalon2 = RobotMap.colectorTalon2;
+    Talon colectorTalon3 = RobotMap.colectorTalon3;
+    DigitalInput collectSenPort1 = RobotMap.collectSenPort1;
+    DigitalInput collectSenPort2 = RobotMap.collectSenPort2;
+    DigitalInput collectSenPort3 = RobotMap.collectSenPort3;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
