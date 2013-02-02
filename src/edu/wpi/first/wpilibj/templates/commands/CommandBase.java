@@ -29,7 +29,7 @@ public abstract class CommandBase extends Command {
     public static Lifter theLifter = new Lifter ();
     public static ScooperCollector theScooperCollector = new ScooperCollector ();
     public static Tracking theTracking = new Tracking ();
-    public static TheShifter theShifter = new TheShifter();
+    public static TheShifter theShifter = new TheShifter ();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

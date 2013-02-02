@@ -29,10 +29,10 @@ public class RobotMap {
     
     //PWM
     public static Jaguar spinnerMotor = new Jaguar (5);
-    public static Jaguar frontRightMotor = new Jaguar (1);
-    public static Jaguar frontLeftMotor = new Jaguar (2);
-    public static Jaguar backRightMotor = new Jaguar (3);
-    public static Jaguar backLeftMotor = new Jaguar (4);
+    public static Jaguar frontRightMotor = new Jaguar (1, 1);
+    public static Jaguar backRightMotor = new Jaguar (1, 2);
+    public static Jaguar frontLeftMotor = new Jaguar (1, 3);
+    public static Jaguar backLeftMotor = new Jaguar (1, 4);
     public static Talon elevationTalon = new Talon (6);
     public static Talon colectorTalon1 = new Talon (7);
     public static Talon colectorTalon2 = new Talon (8);

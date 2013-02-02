@@ -1,10 +1,12 @@
 // AND WE DANCED!!!!!
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -49,5 +51,18 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+    public OI(){
+        
+    }
+    
+    public double leftUpDown () {
+        SmartDashboard.putNumber("Stick Axis Left", stick.getRawAxis(2));
+        return stick.getRawAxis(2);
+        
+    }
+    public double rightUpDown () {
+        SmartDashboard.putNumber("Stick Axis Right", stick.getRawAxis(5));
+        return stick.getRawAxis(5);   
+    }
 }
 

@@ -4,11 +4,15 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import team.util.MotorScaler;
+
 /**
  *
  * @author team3574
  */
 public class DriveWithJoysticks extends CommandBase {
+    public static MotorScaler motorScalerLeft = new MotorScaler();
+    public static MotorScaler motorScalerRight = new MotorScaler();
     
     public DriveWithJoysticks() {
         // Use requires() here to declare subsystem dependencies
@@ -21,6 +25,12 @@ public class DriveWithJoysticks extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        double leftSpeed = motorScalerLeft.scale(oi.leftUpDown());
+        System.out.println("Execution! >:D");
+        double rightSpeed = motorScalerRight.scale(oi.rightUpDown());
+        //double speed = oi.topUpDown();
+        theDrive.goVariable(leftSpeed, rightSpeed);
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
