@@ -5,38 +5,34 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import team.util.LogDebugger;
-import team.util.MotorScaler;
 
 /**
  *
  * @author team3574
  */
-public class DriveWithJoysticks extends CommandBase {
-    public static MotorScaler motorScalerLeft = new MotorScaler();
-    public static MotorScaler motorScalerRight = new MotorScaler();
-    
-    public DriveWithJoysticks() {
+public class LogCommand extends CommandBase {
+
+    public LogCommand() {
+        LogDebugger.log("log command instanced");
         // Use requires() here to declare subsystem dependencies
-        requires(theDrive);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        LogDebugger.log("log command init");
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double leftSpeed = motorScalerLeft.scale(oi.leftUpDown());
-        // LogDebugger.log("Execution! >:D");
-        double rightSpeed = motorScalerRight.scale(oi.rightUpDown());
-        //double speed = oi.topUpDown();
-        theDrive.goVariable(leftSpeed, rightSpeed);
-        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        LogDebugger.log("log command finished");
+
+        return true;
     }
 
     // Called once after isFinished returns true

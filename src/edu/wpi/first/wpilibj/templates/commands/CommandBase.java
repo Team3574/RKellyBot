@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Lifter;
 import edu.wpi.first.wpilibj.templates.subsystems.ScooperCollector;
 import edu.wpi.first.wpilibj.templates.subsystems.TheShifter;
 import edu.wpi.first.wpilibj.templates.subsystems.Tracking;
+import team.util.LogDebugger;
 
 
 /**
@@ -38,6 +39,8 @@ public abstract class CommandBase extends Command {
         // yet. Thus, their requires() statements may grab null pointers. Bad
         // news. Don't move it.
         oi = new OI();
+            LogDebugger.log("init command for command base.");
+
 
         // Show what command your subsystem is running on the SmartDashboard
         //SmartDashboard.putData(exampleSubsystem);

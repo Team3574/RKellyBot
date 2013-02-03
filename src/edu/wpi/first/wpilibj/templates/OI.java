@@ -7,6 +7,12 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.FlingerPyrimidSpeed;
+import edu.wpi.first.wpilibj.templates.commands.FlingerNormal;
+import edu.wpi.first.wpilibj.templates.commands.FlingerOff;
+import edu.wpi.first.wpilibj.templates.commands.FlingerPowerSavingMode;
+import edu.wpi.first.wpilibj.templates.commands.LogCommand;
+import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -51,7 +57,12 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+    
     public OI(){
+        b1.whenPressed(new FlingerPyrimidSpeed());
+        b2.whenPressed(new FlingerNormal());
+        b3.whenPressed(new FlingerOff());
+        b4.whenPressed(new FlingerPowerSavingMode());
         
     }
     

@@ -48,10 +48,10 @@ public class RobotMap {
     public static DigitalInput collectSenPort2 = new DigitalInput (10);
     public static DigitalInput collectSenPort3 = new DigitalInput (11);
      
-    // analog inputs 
+    //Analog inputs 
     
     
-    // compressor (use relay)
+    //Compressor (use relay)
     public static Compressor airCompressor = new Compressor (14, 1);
 
     //Solenoid (use Pneumatics)

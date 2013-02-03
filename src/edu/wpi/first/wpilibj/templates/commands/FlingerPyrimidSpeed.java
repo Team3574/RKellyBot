@@ -3,40 +3,31 @@
  * and open the template in the editor.
  */
 package edu.wpi.first.wpilibj.templates.commands;
-
-import team.util.LogDebugger;
-import team.util.MotorScaler;
-
+import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
 /**
  *
  * @author team3574
  */
-public class DriveWithJoysticks extends CommandBase {
-    public static MotorScaler motorScalerLeft = new MotorScaler();
-    public static MotorScaler motorScalerRight = new MotorScaler();
+public class FlingerPyrimidSpeed extends CommandBase {
     
-    public DriveWithJoysticks() {
+    public FlingerPyrimidSpeed() {
         // Use requires() here to declare subsystem dependencies
-        requires(theDrive);
+        // eg. requires(chassis);
+        requires(theFlinger);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        theFlinger.setSetpoint(Flinger.PYRIMID_SPEED);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double leftSpeed = motorScalerLeft.scale(oi.leftUpDown());
-        // LogDebugger.log("Execution! >:D");
-        double rightSpeed = motorScalerRight.scale(oi.rightUpDown());
-        //double speed = oi.topUpDown();
-        theDrive.goVariable(leftSpeed, rightSpeed);
-        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
