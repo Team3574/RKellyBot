@@ -7,12 +7,14 @@
 //  TODO:  make it work
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import team.util.LogDebugger;
+import team.util.PIDCalculate;
 
 /**
  *
@@ -21,10 +23,14 @@ import team.util.LogDebugger;
 public class Flinger extends PIDSubsystem {
     Encoder spinnerEncoder = RobotMap.spinnerEncoder;
     Jaguar spinnerMotor = RobotMap.spinnerMotor;
-    
-    private static final double Kp = 0.0;
+    private double lastSpeed = 0.0;
+    private double lastSpinnerCount = 0.0;
+    private double weightFactor = 10.0;
+
+    private static final double Kp = 0.1;
     private static final double Ki = 0.0;
     private static final double Kd = 0.0;
+    private static final double Kf = 1.0;
     
     public static final double NORMAL_SPEED = 1,
             PYRIMID_SPEED = 0.5,
@@ -33,21 +39,22 @@ public class Flinger extends PIDSubsystem {
 
     // Initialize your subsystem here
     public Flinger() {
-        super("FlingerMotor", Kp, Ki, Kd);
+        super("FlingerMotor", Kp, Ki, Kd, Kf);
         
         spinnerEncoder.start();
         
         LogDebugger.log("Flinger Started!");
         
-        setSetpoint(-2000);
-        enable();
+        this.setSetpoint(0.0);
+        
+        //enable();
 
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
     }
-    
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -57,16 +64,24 @@ public class Flinger extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        SmartDashboard.putNumber("Flinger PID In", spinnerEncoder.getRate());
-        return spinnerEncoder.getRate();
+        double currnetSpinnerCount = spinnerEncoder.get();
+        double reading = currnetSpinnerCount - this.lastSpinnerCount;
+        double speed = ((lastSpeed * weightFactor) + reading)/(weightFactor + 1);
+        this.lastSpeed = speed;
+        this.lastSpinnerCount = currnetSpinnerCount;
+        
+        SmartDashboard.putNumber("Flinger Encoder Speed", speed/650);        
+        return speed/650;        
     }
     
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
+        // setSetpoint(DriverStation.getInstance().getAnalogIn(4) / 5);
         SmartDashboard.putNumber("Flinger setpoint", this.getSetpoint());
-        SmartDashboard.putNumber("Flinger PID Out", output);
-        LogDebugger.log("PID");
+        SmartDashboard.putNumber("Flinger Error", output);
+        SmartDashboard.putNumber("Flinger Motor get", spinnerMotor.get());
+
         spinnerMotor.set(output);
-    }
+}
 }

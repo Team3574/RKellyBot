@@ -19,7 +19,9 @@ public class FlingerPyrimidSpeed extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         theFlinger.setSetpoint(Flinger.PYRIMID_SPEED);
-    }
+        theFlinger.getPIDController().reset();
+        theFlinger.enable();
+     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {

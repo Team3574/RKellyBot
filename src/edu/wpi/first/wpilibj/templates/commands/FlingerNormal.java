@@ -20,7 +20,9 @@ public class FlingerNormal extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-           theFlinger.setSetpoint(Flinger.NORMAL_SPEED);
+        theFlinger.setSetpoint(Flinger.NORMAL_SPEED);
+        theFlinger.getPIDController().reset();
+        theFlinger.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -19,7 +19,10 @@ public class FlingerOff extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         
-        theFlinger.setSetpoint(Flinger.OFF);
+        theFlinger.setSetpoint(Flinger.OFF);        
+        theFlinger.getPIDController().reset();
+        theFlinger.enable();
+ 
     }
 
     // Called repeatedly when this Command is scheduled to run

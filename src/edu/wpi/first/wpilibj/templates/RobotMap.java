@@ -39,7 +39,7 @@ public class RobotMap {
     public static Talon colectorTalon3 = new Talon (9);
     
     //Digital IO
-    public static Encoder spinnerEncoder = new Encoder (5, 6);
+    public static Encoder spinnerEncoder = new Encoder (5, 6, true);
     public static Encoder leftWheelEncoder = new Encoder (1, 2);
     public static Encoder rightWheelEncoder = new Encoder (3, 4);
     public static Encoder elevationEncoder = new Encoder (7, 8);
