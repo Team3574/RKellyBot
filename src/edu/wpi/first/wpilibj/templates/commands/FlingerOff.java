@@ -20,7 +20,6 @@ public class FlingerOff extends CommandBase {
     protected void initialize() {
         
         theFlinger.setSetpoint(Flinger.OFF);        
-        theFlinger.getPIDController().reset();
         theFlinger.enable();
  
     }

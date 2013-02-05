@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  *
  * @author team3574
  */
-public class TheShifter extends Subsystem {
+public class Shifter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     Solenoid shifterPort = RobotMap.shifterPort; 

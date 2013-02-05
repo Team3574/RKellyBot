@@ -3,12 +3,13 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.OI;
+import edu.wpi.first.wpilibj.templates.subsystems.Accelero;
 import edu.wpi.first.wpilibj.templates.subsystems.Drive;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
-import edu.wpi.first.wpilibj.templates.subsystems.Hopper;
+import edu.wpi.first.wpilibj.templates.subsystems.PizzaBox;
 import edu.wpi.first.wpilibj.templates.subsystems.Lifter;
 import edu.wpi.first.wpilibj.templates.subsystems.ScooperCollector;
-import edu.wpi.first.wpilibj.templates.subsystems.TheShifter;
+import edu.wpi.first.wpilibj.templates.subsystems.Shifter;
 import edu.wpi.first.wpilibj.templates.subsystems.Tracking;
 import team.util.LogDebugger;
 
@@ -26,11 +27,12 @@ public abstract class CommandBase extends Command {
     //public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static Drive theDrive = new Drive ();
     public static Flinger theFlinger = new Flinger ();
-    public static Hopper theHopper = new Hopper ();
+    public static PizzaBox thePizzaBox = new PizzaBox ();
     public static Lifter theLifter = new Lifter ();
     public static ScooperCollector theScooperCollector = new ScooperCollector ();
     public static Tracking theTracking = new Tracking ();
-    public static TheShifter theShifter = new TheShifter ();
+    public static Shifter theShifter = new Shifter ();
+    public static Accelero theAccelerometer = new Accelero();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

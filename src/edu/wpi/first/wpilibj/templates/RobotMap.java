@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.ADXL345_I2C;
+import edu.wpi.first.wpilibj.Accelerometer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -28,21 +30,20 @@ public class RobotMap {
     // public static final int rangefinderModule = 1;
     
     //PWM
+    public static Jaguar frontRightMotor = new Jaguar (1);
+    public static Jaguar backRightMotor = new Jaguar (2);
+    public static Jaguar frontLeftMotor = new Jaguar (3);
+    public static Jaguar backLeftMotor = new Jaguar (4);
     public static Jaguar spinnerMotor = new Jaguar (5);
-    public static Jaguar frontRightMotor = new Jaguar (1, 1);
-    public static Jaguar backRightMotor = new Jaguar (1, 2);
-    public static Jaguar frontLeftMotor = new Jaguar (1, 3);
-    public static Jaguar backLeftMotor = new Jaguar (1, 4);
-    public static Talon elevationTalon = new Talon (6);
-    public static Talon colectorTalon1 = new Talon (7);
-    public static Talon colectorTalon2 = new Talon (8);
-    public static Talon colectorTalon3 = new Talon (9);
+    public static Talon tiltingTalon = new Talon (6);
+    public static Talon moverUpperTalon = new Talon (7);
+    public static Talon collectorTalon = new Talon (8);
     
     //Digital IO
     public static Encoder spinnerEncoder = new Encoder (5, 6, true);
     public static Encoder leftWheelEncoder = new Encoder (1, 2);
     public static Encoder rightWheelEncoder = new Encoder (3, 4);
-    public static Encoder elevationEncoder = new Encoder (7, 8);
+    public static Encoder tiltingEncoder = new Encoder (7, 8);
     
     public static DigitalInput collectSenPort1 = new DigitalInput (9);
     public static DigitalInput collectSenPort2 = new DigitalInput (10);
@@ -62,5 +63,5 @@ public class RobotMap {
     public static Solenoid liftPort2 = new Solenoid (5);
     public static Solenoid shifterPort = new Solenoid (6);
     
-
+    public static ADXL345_I2C accelerometer = new ADXL345_I2C(1, ADXL345_I2C.DataFormat_Range.k2G);
 }

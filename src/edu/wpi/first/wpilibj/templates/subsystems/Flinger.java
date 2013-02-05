@@ -3,8 +3,7 @@
  * and open the template in the editor.
  */
 
-///////   THIS CODE IS NOT YET WORKING
-//  TODO:  make it work
+
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -83,5 +82,10 @@ public class Flinger extends PIDSubsystem {
         SmartDashboard.putNumber("Flinger Motor get", spinnerMotor.get());
 
         spinnerMotor.set(output);
-}
+    }
+    
+    public void setSetpoint (double setPoint) {
+        super.setSetpoint(setPoint);
+        this.getPIDController().reset();
+    }
 }

@@ -62,8 +62,8 @@ public class Drive extends Subsystem {
        frontRightMotor.set(-rightSpeed);
        backRightMotor.set(-rightSpeed);
        
-       SmartDashboard.putNumber("Left Encoder", leftWheelEncoder.getRate());
-       SmartDashboard.putNumber("Right Encoder", rightWheelEncoder.getRate());
+       SmartDashboard.putNumber("Left Encoder", leftWheelEncoder.get());
+       SmartDashboard.putNumber("Right Encoder", rightWheelEncoder.get());
        
     }
 }

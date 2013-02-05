@@ -16,9 +16,9 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class ScooperCollector extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    Talon colectorTalon1 = RobotMap.colectorTalon1;
-    Talon colectorTalon2 = RobotMap.colectorTalon2;
-    Talon colectorTalon3 = RobotMap.colectorTalon3;
+    Talon colectorTalon1 = RobotMap.moverUpperTalon;
+    Talon colectorTalon2 = RobotMap.collectorTalon;
+    
     DigitalInput collectSenPort1 = RobotMap.collectSenPort1;
     DigitalInput collectSenPort2 = RobotMap.collectSenPort2;
     DigitalInput collectSenPort3 = RobotMap.collectSenPort3;
