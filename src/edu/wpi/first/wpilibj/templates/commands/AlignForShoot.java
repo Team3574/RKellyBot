@@ -8,11 +8,12 @@ package edu.wpi.first.wpilibj.templates.commands;
  *
  * @author team3574
  */
-public class TrackTarget extends CommandBase {
+public class AlignForShoot extends CommandBase {
     
-    public TrackTarget() {
+    public AlignForShoot() {
         // Use requires() here to declare subsystem dependencies
-        requires(theTracking);
+        // eg. requires(chassis);
+        requires(theDrive);
     }
 
     // Called just before this Command runs the first time
