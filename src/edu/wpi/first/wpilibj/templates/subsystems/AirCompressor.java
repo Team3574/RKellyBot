@@ -21,4 +21,12 @@ public class AirCompressor extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void CompresserStart() {
+      airCompressor.start();  
+    }
+    
+    public void CompresserStop() {
+      airCompressor.stop();  
+    }
 }

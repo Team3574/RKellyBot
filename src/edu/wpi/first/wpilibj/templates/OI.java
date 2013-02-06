@@ -11,7 +11,9 @@ import edu.wpi.first.wpilibj.templates.commands.FlingerPyrimidSpeed;
 import edu.wpi.first.wpilibj.templates.commands.FlingerNormal;
 import edu.wpi.first.wpilibj.templates.commands.FlingerOff;
 import edu.wpi.first.wpilibj.templates.commands.FlingerPowerSavingMode;
+import edu.wpi.first.wpilibj.templates.commands.LEDBlingControl;
 import edu.wpi.first.wpilibj.templates.commands.LogCommand;
+import edu.wpi.first.wpilibj.templates.subsystems.Bling;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
 
 /**
@@ -59,10 +61,10 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     
     public OI(){
-        b1.whenPressed(new FlingerPyrimidSpeed());
-        b2.whenPressed(new FlingerNormal());
-        b3.whenPressed(new FlingerOff());
-        b4.whenPressed(new FlingerPowerSavingMode());
+        b1.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
+        b2.whenPressed(new LEDBlingControl(Bling.METEOR));
+        b3.whenPressed(new LEDBlingControl(Bling.SHOOT));
+        b4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
         
     }
     

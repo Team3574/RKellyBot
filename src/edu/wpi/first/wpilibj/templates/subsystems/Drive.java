@@ -36,14 +36,9 @@ public class Drive extends Subsystem {
         
     }
     
-    // New and needs Testing
+    // Needs Testing
     public Drive(){
         super("Drive");
-        //DigitalModule::GetI2C(UINT32,address);
-        DigitalModule digiMod = DigitalModule.getInstance(2);
-        I2C chat = digiMod.getI2C(4);
-        chat.setCompatabilityMode(true);
-        
         
         leftWheelEncoder.start();
         rightWheelEncoder.start();

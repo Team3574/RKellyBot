@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.Accelero;
 import edu.wpi.first.wpilibj.templates.subsystems.Drive;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
+import edu.wpi.first.wpilibj.templates.subsystems.Bling;
 import edu.wpi.first.wpilibj.templates.subsystems.PizzaBox;
 import edu.wpi.first.wpilibj.templates.subsystems.Lifter;
 import edu.wpi.first.wpilibj.templates.subsystems.ScooperCollector;
@@ -33,6 +34,7 @@ public abstract class CommandBase extends Command {
     public static Tracking theTracking = new Tracking ();
     public static Shifter theShifter = new Shifter ();
     public static Accelero theAccelerometer = new Accelero();
+    public static Bling theBling = new Bling();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
