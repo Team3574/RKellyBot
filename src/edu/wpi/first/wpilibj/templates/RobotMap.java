@@ -57,10 +57,10 @@ public class RobotMap {
 
     //Solenoid (use Pneumatics)
     public static Solenoid kickingPort = new Solenoid (1);
-    public static Solenoid liftarmsPort1 = new Solenoid (2);
-    public static Solenoid liftarmsPort2 = new Solenoid (3);
-    public static Solenoid liftPort1 = new Solenoid (4);
-    public static Solenoid liftPort2 = new Solenoid (5);
+    public static Solenoid positionArmLeft = new Solenoid (2);
+    public static Solenoid positionArmRight = new Solenoid (3);
+    public static Solenoid liftTheRobotLeft = new Solenoid (4);
+    public static Solenoid liftTheRobotRight = new Solenoid (5);
     public static Solenoid shifterPort = new Solenoid (6);
     
     public static ADXL345_I2C accelerometer = new ADXL345_I2C(1, ADXL345_I2C.DataFormat_Range.k2G);

@@ -21,4 +21,10 @@ public class Shifter extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    public void gear1() {
+        shifterPort.set(false);
+    }
+    public void gear2() {
+        shifterPort.set(true);
+    }
 }

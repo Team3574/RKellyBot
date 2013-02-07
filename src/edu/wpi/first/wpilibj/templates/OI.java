@@ -65,6 +65,10 @@ public class OI {
         b2.whenPressed(new LEDBlingControl(Bling.METEOR));
         b3.whenPressed(new LEDBlingControl(Bling.SHOOT));
         b4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
+//        b1.whenPressed(new FlingerNormal());
+//        b2.whenPressed(new FlingerOff());
+//        b3.whenPressed(new FlingerPowerSavingMode());
+//        b4.whenPressed(new FlingerPyrimidSpeed());
         
     }
     

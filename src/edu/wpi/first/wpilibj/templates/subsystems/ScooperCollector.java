@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.LogCollectSensor;
 
 /**
  *
@@ -16,8 +17,8 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class ScooperCollector extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    Talon colectorTalon1 = RobotMap.moverUpperTalon;
-    Talon colectorTalon2 = RobotMap.collectorTalon;
+    Talon moverUpperTalon = RobotMap.moverUpperTalon;
+    Talon collectorTalon = RobotMap.collectorTalon;
     
     DigitalInput collectSenPort1 = RobotMap.collectSenPort1;
     DigitalInput collectSenPort2 = RobotMap.collectSenPort2;
@@ -26,5 +27,27 @@ public class ScooperCollector extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new LogCollectSensor());
     }
+    
+    public void setCollectorMotor(double speed) {
+        collectorTalon.set(speed);
+    }
+    
+    public void setElevatorMotor(double speed) {
+        moverUpperTalon.set(speed);
+    }
+    
+    public boolean isPresentSensor1() {
+        return collectSenPort1.get();
+    }
+    
+    public boolean isPresentSensor2() {
+        return collectSenPort2.get();
+    }
+    
+    public boolean isPresentSensor3() {
+        return collectSenPort3.get();
+    }
+    
 }

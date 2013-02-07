@@ -15,10 +15,10 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class Lifter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    Solenoid liftarmsPort1 = RobotMap.liftarmsPort1;
-    Solenoid liftarmsPort2 = RobotMap.liftarmsPort2;
-    Solenoid liftPort1 = RobotMap.liftPort1;
-    Solenoid liftPort2 = RobotMap.liftPort2;
+    Solenoid positionArmLeft = RobotMap.positionArmLeft;
+    Solenoid positionArmRight = RobotMap.positionArmRight;
+    Solenoid liftTheRobotLeft = RobotMap.liftTheRobotLeft;
+    Solenoid liftTheRobotRight = RobotMap.liftTheRobotRight;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -27,14 +27,25 @@ public class Lifter extends Subsystem {
     }
     
     public void stowArms() {
-        
+        positionArmLeft.set(false);     
+        positionArmRight.set(false);
+        liftTheRobotLeft.set(false);
+        liftTheRobotRight.set(false);
     }
     
-    public void readyArms() {
-        
+    public void placeArmsLeft() {
+        positionArmLeft.set(true);
+  
+    }
+    public void placeArmsRight(){
+        positionArmRight.set(true);
     }
     
-    public void liftArms() {
-        
+    public void liftArmsLeft() {
+        liftTheRobotLeft.set(true);
+    }
+    
+    public void liftArmRight(){
+        liftTheRobotRight.set(true);
     }
 }
