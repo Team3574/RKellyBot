@@ -7,8 +7,9 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.LogCollectSensor;
+
 
 /**
  *
@@ -27,7 +28,7 @@ public class ScooperCollector extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new LogCollectSensor());
+        //setDefaultCommand(new LogCollectSensor());
     }
     
     public void setCollectorMotor(double speed) {
@@ -50,4 +51,9 @@ public class ScooperCollector extends Subsystem {
         return collectSenPort3.get();
     }
     
+    public void updateStatus(){
+        SmartDashboard.putBoolean("Collector Sensor Port 1", isPresentSensor1());
+        SmartDashboard.putBoolean("Collector Sensor Port 2", isPresentSensor2());
+        SmartDashboard.putBoolean("Collector Sensor Port 3", isPresentSensor3());
+    }
 }

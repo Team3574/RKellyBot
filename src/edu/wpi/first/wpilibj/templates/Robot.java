@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 
 
@@ -22,7 +23,7 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class RobotTemplate extends IterativeRobot {
+public class Robot extends IterativeRobot {
 
     //Command autonomousCommand;
 
@@ -33,7 +34,7 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         //autonomousCommand = new ExampleCommand();
-
+        
         // Initialize all subsystems
         CommandBase.init();
     }
@@ -48,6 +49,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        updateStatus();
     }
 
     public void teleopInit() {
@@ -63,6 +65,11 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        updateStatus();
+    }
+    
+    public void disabledPeriodic(){
+        updateStatus();
     }
     
     /**
@@ -70,5 +77,11 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        updateStatus();
+    }
+    
+    public void updateStatus(){
+        CommandBase.theScooperCollector.updateStatus();
+        CommandBase.theAccelerometer.updateStatus();
     }
 }

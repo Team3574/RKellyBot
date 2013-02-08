@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
+import edu.wpi.first.wpilibj.buttons.InternalButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.FlingerPyrimidSpeed;
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.commands.FlingerNormal;
 import edu.wpi.first.wpilibj.templates.commands.FlingerOff;
 import edu.wpi.first.wpilibj.templates.commands.FlingerPowerSavingMode;
 import edu.wpi.first.wpilibj.templates.commands.LEDBlingControl;
-import edu.wpi.first.wpilibj.templates.commands.LogCommand;
+import edu.wpi.first.wpilibj.templates.commands.testCommands.LogCommand;
 import edu.wpi.first.wpilibj.templates.subsystems.Bling;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
 
@@ -29,6 +30,12 @@ public class OI {
     // Button button = new JoystickButton(stick, buttonNumber);
     
     Joystick stick = new Joystick(1);
+    
+    Button commandTestLog = new JoystickButton(stick, 5);
+    InternalButton bi1 = new InternalButton();
+    InternalButton bi2 = new InternalButton();
+    InternalButton bi3 = new InternalButton();
+    InternalButton bi4 = new InternalButton();
     
     Button b1 = new JoystickButton(stick, 1);
     Button b2 = new JoystickButton(stick, 2);
@@ -61,14 +68,28 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     
     public OI(){
-        b1.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
-        b2.whenPressed(new LEDBlingControl(Bling.METEOR));
-        b3.whenPressed(new LEDBlingControl(Bling.SHOOT));
-        b4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
-//        b1.whenPressed(new FlingerNormal());
-//        b2.whenPressed(new FlingerOff());
-//        b3.whenPressed(new FlingerPowerSavingMode());
-//        b4.whenPressed(new FlingerPyrimidSpeed());
+        
+        commandTestLog.whenPressed(new LogCommand());
+        bi1.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
+        bi2.whenPressed(new LEDBlingControl(Bling.METEOR));
+        bi3.whenPressed(new LEDBlingControl(Bling.SHOOT));
+        bi4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
+        
+        b1.whenPressed(new FlingerNormal());
+        b2.whenPressed(new FlingerOff());
+        b3.whenPressed(new FlingerPowerSavingMode());
+        b4.whenPressed(new FlingerPyrimidSpeed());
+        
+        //SmartDashboard.putData("Command Test Log", commandTestLog);
+        SmartDashboard.putData("MARCH_RWB", bi1);
+        SmartDashboard.putData("METEOR", bi2);
+        SmartDashboard.putData("SHOOT", bi3);
+        SmartDashboard.putData("FADE_PG", bi4);
+        
+//        SmartDashboard.putData("MARCH_RWB", bi1);
+//        SmartDashboard.putData("METEOR", bi2);
+//        SmartDashboard.putData("SHOOT", bi3);
+//        SmartDashboard.putData("FADE_PG", bi4);
         
     }
     

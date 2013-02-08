@@ -42,9 +42,18 @@ public abstract class CommandBase extends Command {
         // which commands extend), subsystems are not guaranteed to be
         // yet. Thus, their requires() statements may grab null pointers. Bad
         // news. Don't move it.
+        LogDebugger.log("init command for command base.");
         oi = new OI();
-            LogDebugger.log("init command for command base.");
-
+        SmartDashboard.putData(theDrive);
+        SmartDashboard.putData(theAccelerometer);
+        SmartDashboard.putData(theBling);
+        SmartDashboard.putData(theFlinger);
+        SmartDashboard.putData(theLifter);
+        SmartDashboard.putData(thePizzaBox);
+        SmartDashboard.putData(theScooperCollector);
+        SmartDashboard.putData(theShifter);
+        SmartDashboard.putData(theTracking);
+        
 
         // Show what command your subsystem is running on the SmartDashboard
         //SmartDashboard.putData(exampleSubsystem);

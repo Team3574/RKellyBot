@@ -6,9 +6,8 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.AccelerometerRead;
-import team.util.LogDebugger;
 
 /**
  *
@@ -23,7 +22,7 @@ public class Accelero extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new AccelerometerRead());
+        //setDefaultCommand(new ());
     }
     
     public double X() {
@@ -36,5 +35,11 @@ public class Accelero extends Subsystem {
     
     public double Z() {
         return accelerometer.getAcceleration(ADXL345_I2C.Axes.kZ);
+    }
+    
+    public void updateStatus () {
+        SmartDashboard.putNumber("accel x", X());
+        SmartDashboard.putNumber("accel y", Y());
+        SmartDashboard.putNumber("accel z", Z());
     }
 }
