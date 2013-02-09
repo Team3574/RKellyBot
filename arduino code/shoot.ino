@@ -8,20 +8,51 @@
 //   NEO_KHZ400  400 KHz bitstream (e.g. FLORA pixels)
 //   NEO_KHZ800  800 KHz bitstream (e.g. High Density LED strip)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, 6, NEO_GRB + NEO_KHZ800);
-
+#include <Wire.h>
 void setup() {
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
+  Wire.begin(4);                // join i2c bus with address #4
+  Wire.onReceive(receiveEvent); // register event  
 }
+
+int showPattern = -1;
 
 void loop() {
 //  shootColor(strip.Color(155, 0, 255));  shootColor(strip.Color(255, 0, 0));  shootColor(strip.Color(255, 255, 255));  shootColor(strip.Color(0, 0, 255));  
   meteor(20);
-  delay(500);
-//  marchRedWhiteBlue();
+  //delay(500);
+  
+  switch(showPattern)
+  {
+   case 0: meteor(20); showPattern = -1; break;
+   case 1: fadePurpleGold(); showPattern = -1; break;
+   case 2: marchRedWhiteBlue(); showPattern = -1; break;
+   case 3: shootColor(strip.Color(155, 0, 255)); showPattern = -1; break;
+  default:    solidColor(strip.Color(0, 0, 0));
+  strip.show(); showPattern = -1; break;
+
+  }
+  
+  //marchRedWhiteBlue();
 //  delay(500);
-  fadePurpleGold();
-  delay(500);
+  //fadePurpleGold();
+  //delay(500);
+  //solidColor(strip.Color(0, 0, 0));
+  //strip.show();
+  delay(50);
+  
+}
+
+
+
+// function that executes whenever data is received from master
+// this function is registered as an event, see setup()
+void receiveEvent(int howMany)
+{
+  static uint8_t ct = 0;
+  int x = Wire.read();
+  showPattern = x;
 }
 
 void marchRedWhiteBlue()
@@ -39,7 +70,7 @@ void marchRedWhiteBlue()
       strip.setPixelColor((index + frame) % 60 , colors[ ((index)/5) % 3 ]);
     }
     strip.show();
-    delay(100);
+    delay(50);
     frame++;
   }
   
@@ -70,7 +101,7 @@ void fadePurpleGold()
   
   strip.show();
   
-  delay(15);
+  delay(5);
   z+= 0.05f;
   }
 }
