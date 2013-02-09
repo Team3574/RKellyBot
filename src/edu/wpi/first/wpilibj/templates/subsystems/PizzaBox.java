@@ -17,9 +17,10 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class PizzaBox extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+
+    Solenoid kickingPort = RobotMap.kickingPort;
     Talon elevationTalon = RobotMap.tiltingTalon;
     Encoder elevationEncoder = RobotMap.tiltingEncoder;
-    Solenoid kickingPort = RobotMap.kickingPort;
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -43,7 +43,7 @@ public class RobotMap {
     public static Encoder spinnerEncoder = new Encoder (5, 6, true);
     public static Encoder leftWheelEncoder = new Encoder (1, 2);
     public static Encoder rightWheelEncoder = new Encoder (3, 4);
-    public static Encoder tiltingEncoder = new Encoder (7, 8);
+    public static Encoder tiltingEncoder = new Encoder (7, 8, true);
     
     public static DigitalInput collectSenPort1 = new DigitalInput (9);
     public static DigitalInput collectSenPort2 = new DigitalInput (10);
