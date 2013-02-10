@@ -19,10 +19,10 @@ public class Bling extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    public static final int SHOOT = 0,
-                            MARCH_RWB = 1,
-                            FADE_PG = 2,
-                            METEOR = 3;
+    public static final int SHOOT = 3,
+                            MARCH_RWB = 2,
+                            FADE_PG = 1,
+                            METEOR = 0;
 
     private I2C chat;
     

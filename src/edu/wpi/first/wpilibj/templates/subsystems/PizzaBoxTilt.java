@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.SetTiltSetpoint;
+import team.util.LogDebugger;
 
 /**
  *
@@ -17,7 +18,7 @@ import edu.wpi.first.wpilibj.templates.commands.SetTiltSetpoint;
  */
 public class PizzaBoxTilt extends PIDSubsystem {
 
-    private static final double Kp = 1.0;
+    private static final double Kp = 0.01;
     private static final double Ki = 0.0;
     private static final double Kd = 0.0;
     
@@ -28,12 +29,17 @@ public class PizzaBoxTilt extends PIDSubsystem {
     public PizzaBoxTilt() {
         super("PizzaBoxTilt", Kp, Ki, Kd);
         elevationEncoder.start();
+        SmartDashboard.putNumber("P", 0.1);
+        SmartDashboard.putNumber("I", 0.0);
+        SmartDashboard.putNumber("D", 0.0);
+        SmartDashboard.putNumber("PID multiplyer", 0.01);
+        SmartDashboard.putNumber("Pizza Box Tilt Goal", 0.0);        
 
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-        enable();
+//        enable();
     }
     
     public void initDefaultCommand() {
@@ -55,5 +61,18 @@ public class PizzaBoxTilt extends PIDSubsystem {
         // e.g. yourMotor.set(output);
         elevationTalon.set(output);
         SmartDashboard.putNumber("Elevation Output", output);
+    }
+    
+    public void setPID (double p,double i,double d) {
+        this.getPIDController().disable();
+        this.getPIDController().setPID(p, i, d);
+        this.getPIDController().enable();
+    }
+    
+    public void setSetpoint (double setPoint) {
+        this.getPIDController().reset();
+        LogDebugger.log("changed setpoint");
+        super.setSetpoint(setPoint);
+        this.enable();
     }
 }

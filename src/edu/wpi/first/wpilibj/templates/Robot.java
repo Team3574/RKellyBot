@@ -12,8 +12,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
+import team.util.LogDebugger;
 
 
 /**
@@ -31,12 +33,19 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+    public NetworkTable table;
+    
     public void robotInit() {
         // instantiate the command used for the autonomous period
         //autonomousCommand = new ExampleCommand();
         
         // Initialize all subsystems
         CommandBase.init();
+        
+        table = NetworkTable.getTable("CRIO");
+        table.putBoolean("bool", true);
+        table.putNumber("double", 3.1415927);
+        table.putString("sring", "a string");
     }
 
     public void autonomousInit() {

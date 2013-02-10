@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.templates.commands.FlingerOff;
 import edu.wpi.first.wpilibj.templates.commands.FlingerPowerSavingMode;
 import edu.wpi.first.wpilibj.templates.commands.LEDBlingControl;
 import edu.wpi.first.wpilibj.templates.commands.testCommands.LogCommand;
+import edu.wpi.first.wpilibj.templates.commands.testCommands.TunePID;
 import edu.wpi.first.wpilibj.templates.subsystems.Bling;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
 
@@ -37,6 +38,7 @@ public class OI {
 //    InternalButton bi2 = new InternalButton();
 //    InternalButton bi3 = new InternalButton();
 //    InternalButton bi4 = new InternalButton();
+    InternalButton pidTestButton = new InternalButton();
     
     Button b1 = new JoystickButton(stick, 1);
     Button b2 = new JoystickButton(stick, 2);
@@ -79,7 +81,8 @@ public class OI {
 //        bi2.whenPressed(new LEDBlingControl(Bling.METEOR));
 //        bi3.whenPressed(new LEDBlingControl(Bling.SHOOT));
 //        bi4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
-        
+        pidTestButton.whenPressed(new TunePID());
+      
         b1.whenPressed(new FlingerNormal());
         b2.whenPressed(new FlingerOff());
         b3.whenPressed(new FlingerPowerSavingMode());
@@ -94,6 +97,7 @@ public class OI {
 //        SmartDashboard.putData("METEOR", bi2);
 //        SmartDashboard.putData("SHOOT", bi3);
 //        SmartDashboard.putData("FADE_PG", bi4);
+        SmartDashboard.putData("Tune PID", pidTestButton);
         
 //        SmartDashboard.putData("MARCH_RWB", bi1);
 //        SmartDashboard.putData("METEOR", bi2);
