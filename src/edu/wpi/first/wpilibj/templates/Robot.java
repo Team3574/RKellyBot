@@ -75,6 +75,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         updateStatus();
+        RobotMap.airCompressor.start();
+        SmartDashboard.putBoolean("Air Compressor Value", RobotMap.airCompressor.getPressureSwitchValue());
     }
     
     public void disabledPeriodic(){

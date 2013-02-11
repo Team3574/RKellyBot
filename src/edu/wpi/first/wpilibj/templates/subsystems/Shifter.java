@@ -15,7 +15,9 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class Shifter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    Solenoid shifterPort = RobotMap.shifterPort; 
+    Solenoid shifterPort = RobotMap.shifterPort;
+    
+    int gear = 1;
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -23,8 +25,14 @@ public class Shifter extends Subsystem {
     }
     public void gear1() {
         shifterPort.set(false);
+        gear = 1;
     }
     public void gear2() {
         shifterPort.set(true);
+        gear = 2;
+    }
+    
+    public int getGear() {
+        return gear;
     }
 }

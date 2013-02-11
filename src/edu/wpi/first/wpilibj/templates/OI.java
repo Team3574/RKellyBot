@@ -8,15 +8,20 @@ import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.InternalButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.DeployLifter;
 import edu.wpi.first.wpilibj.templates.commands.FlingerPyrimidSpeed;
 import edu.wpi.first.wpilibj.templates.commands.FlingerNormal;
 import edu.wpi.first.wpilibj.templates.commands.FlingerOff;
 import edu.wpi.first.wpilibj.templates.commands.FlingerPowerSavingMode;
 import edu.wpi.first.wpilibj.templates.commands.LEDBlingControl;
+import edu.wpi.first.wpilibj.templates.commands.Lift;
+import edu.wpi.first.wpilibj.templates.commands.Shift;
+import edu.wpi.first.wpilibj.templates.commands.StowArms;
 import edu.wpi.first.wpilibj.templates.commands.testCommands.LogCommand;
 import edu.wpi.first.wpilibj.templates.commands.testCommands.TunePID;
 import edu.wpi.first.wpilibj.templates.subsystems.Bling;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
+import team.util.XboxController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -33,21 +38,23 @@ public class OI {
     Joystick stick = new Joystick(1);
     Joystick otherStick = new Joystick(2);
     
-    Button commandTestLog = new JoystickButton(stick, 5);
+    
 //    InternalButton bi1 = new InternalButton();
 //    InternalButton bi2 = new InternalButton();
 //    InternalButton bi3 = new InternalButton();
 //    InternalButton bi4 = new InternalButton();
     InternalButton pidTestButton = new InternalButton();
     
-    Button b1 = new JoystickButton(stick, 1);
-    Button b2 = new JoystickButton(stick, 2);
-    Button b3 = new JoystickButton(stick, 3);
-    Button b4 = new JoystickButton(stick, 4);
-    Button bo1 = new JoystickButton(otherStick, 1);
-    Button bo2 = new JoystickButton(otherStick, 2);
-    Button bo3 = new JoystickButton(otherStick, 3);
-    Button bo4 = new JoystickButton(otherStick, 4);
+    Button btnA = new JoystickButton(stick, XboxController.A);
+    Button btnB = new JoystickButton(stick, XboxController.B);
+    Button btnX = new JoystickButton(stick, XboxController.X);
+    Button btnY = new JoystickButton(stick, XboxController.Y);
+    Button btnLB = new JoystickButton(stick, XboxController.LB);
+    Button commandTestLog = new JoystickButton(stick, XboxController.RB);
+    Button btnOtherA = new JoystickButton(otherStick, XboxController.A);
+    Button btnOtherB = new JoystickButton(otherStick, XboxController.B);
+    Button btnOtherX = new JoystickButton(otherStick, XboxController.X);
+    Button btnOtherY = new JoystickButton(otherStick, XboxController.Y);
     
     // Another type of button you can create is a DigitalIOButton, which is
     // a button or switch hooked up to the cypress module. These are useful if
@@ -83,14 +90,18 @@ public class OI {
 //        bi4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
         pidTestButton.whenPressed(new TunePID());
       
-        b1.whenPressed(new FlingerNormal());
-        b2.whenPressed(new FlingerOff());
-        b3.whenPressed(new FlingerPowerSavingMode());
-        b4.whenPressed(new FlingerPyrimidSpeed());
-        bo1.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
-        bo2.whenPressed(new LEDBlingControl(Bling.METEOR));
-        bo3.whenPressed(new LEDBlingControl(Bling.SHOOT));
-        bo4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
+//        btnA.whenPressed(new FlingerNormal());
+//        btnB.whenPressed(new FlingerOff());
+//        btnX.whenPressed(new FlingerPowerSavingMode());
+        btnA.whenPressed(new Lift());
+        btnB.whenPressed(new DeployLifter());
+        btnX.whenPressed(new StowArms());
+        btnY.whenPressed(new FlingerPyrimidSpeed());
+        btnLB.whenPressed(new Shift());
+        btnOtherA.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
+        btnOtherB.whenPressed(new LEDBlingControl(Bling.METEOR));
+        btnOtherX.whenPressed(new LEDBlingControl(Bling.SHOOT));
+        btnOtherY.whenPressed(new LEDBlingControl(Bling.FADE_PG));
         
         //SmartDashboard.putData("Command Test Log", commandTestLog);
 //        SmartDashboard.putData("MARCH_RWB", bi1);

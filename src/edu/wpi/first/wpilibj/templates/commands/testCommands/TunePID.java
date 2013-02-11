@@ -17,11 +17,22 @@ public class TunePID extends CommandBase {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(thePizzaBoxTilt);
+
+        SmartDashboard.putNumber("P", 0.1);
+        SmartDashboard.putNumber("I", 0.0);
+        SmartDashboard.putNumber("D", 0.0);
+        SmartDashboard.putNumber("PID multiplyer", 0.01);
+        SmartDashboard.putNumber("PID Goal", 0.0);  
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        thePizzaBoxTilt.setSetpoint(SmartDashboard.getNumber("Pizza Box Tilt Goal"));
+        if (SmartDashboard.getNumber("PID Goal") == 0.0){
+            SmartDashboard.putNumber("PID Goal", 1000.0);
+        } else {
+            SmartDashboard.putNumber("PID Goal", 0.0);
+        }
+        thePizzaBoxTilt.setSetpoint(SmartDashboard.getNumber("PID Goal"));
         double multiplyer = SmartDashboard.getNumber("PID multiplyer");
         thePizzaBoxTilt.setPID(
                 SmartDashboard.getNumber("P") * multiplyer,

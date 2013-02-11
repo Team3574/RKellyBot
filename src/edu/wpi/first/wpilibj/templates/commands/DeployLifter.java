@@ -4,31 +4,27 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import team.util.LogDebugger;
-
 /**
  *
  * @author team3574
  */
-public class Lift extends CommandBase {
+public class DeployLifter extends CommandBase {
     
-    public Lift() {
+    public DeployLifter() {
         // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
         requires(theLifter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        if (theLifter.getPlaced()) {
-            theLifter.liftArmLeft();
-            theLifter.liftArmRight();
-        } else {
-            LogDebugger.log("You cant lift, you havent placed!");
-        }
-    } 
+        theLifter.placeArmLeft();
+        theLifter.placeArmRight();
+    }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()

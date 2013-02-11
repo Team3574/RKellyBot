@@ -19,7 +19,7 @@ public class Lifter extends Subsystem {
     Solenoid positionArmRight = RobotMap.positionArmRight;
     Solenoid liftTheRobotLeft = RobotMap.liftTheRobotLeft;
     Solenoid liftTheRobotRight = RobotMap.liftTheRobotRight;
-
+    
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -33,19 +33,27 @@ public class Lifter extends Subsystem {
         liftTheRobotRight.set(false);
     }
     
-    public void placeArmsLeft() {
+    public void placeArmLeft() {
         positionArmLeft.set(true);
   
     }
-    public void placeArmsRight(){
+    public void placeArmRight(){
         positionArmRight.set(true);
     }
     
-    public void liftArmsLeft() {
+    public void liftArmLeft() {
         liftTheRobotLeft.set(true);
     }
     
-    public void liftArmRight(){
+    public void liftArmRight() {
         liftTheRobotRight.set(true);
+    }
+    
+    public boolean getPlaced() {
+        if (positionArmLeft.get() && positionArmRight.get()){
+            return true;
+        } else {
+            return false;
+        } 
     }
 }

@@ -18,8 +18,8 @@ import team.util.LogDebugger;
  */
 public class PizzaBoxTilt extends PIDSubsystem {
 
-    private static final double Kp = 0.01;
-    private static final double Ki = 0.0;
+    private static final double Kp = 0.04;
+    private static final double Ki = 0.001;
     private static final double Kd = 0.0;
     
     Talon elevationTalon = RobotMap.tiltingTalon;
@@ -29,11 +29,7 @@ public class PizzaBoxTilt extends PIDSubsystem {
     public PizzaBoxTilt() {
         super("PizzaBoxTilt", Kp, Ki, Kd);
         elevationEncoder.start();
-        SmartDashboard.putNumber("P", 0.1);
-        SmartDashboard.putNumber("I", 0.0);
-        SmartDashboard.putNumber("D", 0.0);
-        SmartDashboard.putNumber("PID multiplyer", 0.01);
-        SmartDashboard.putNumber("Pizza Box Tilt Goal", 0.0);        
+      
 
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
