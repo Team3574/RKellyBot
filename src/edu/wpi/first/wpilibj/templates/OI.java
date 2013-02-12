@@ -90,12 +90,12 @@ public class OI {
 //        bi4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
         pidTestButton.whenPressed(new TunePID());
       
-//        btnA.whenPressed(new FlingerNormal());
-//        btnB.whenPressed(new FlingerOff());
-//        btnX.whenPressed(new FlingerPowerSavingMode());
-        btnA.whenPressed(new Lift());
-        btnB.whenPressed(new DeployLifter());
-        btnX.whenPressed(new StowArms());
+        btnA.whenPressed(new FlingerNormal());
+        btnB.whenPressed(new FlingerOff());
+        btnX.whenPressed(new FlingerPowerSavingMode());
+//        btnA.whenPressed(new Lift());
+//         btnB.whenPressed(new DeployLifter());
+//        btnX.whenPressed(new StowArms());
         btnY.whenPressed(new FlingerPyrimidSpeed());
         btnLB.whenPressed(new Shift());
         btnOtherA.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));

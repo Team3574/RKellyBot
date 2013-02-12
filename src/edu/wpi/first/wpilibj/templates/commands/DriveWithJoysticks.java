@@ -4,6 +4,8 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import team.util.Location;
 import team.util.LogDebugger;
 import team.util.MotorScaler;
 
@@ -14,6 +16,7 @@ import team.util.MotorScaler;
 public class DriveWithJoysticks extends CommandBase {
     public static MotorScaler motorScalerLeft = new MotorScaler();
     public static MotorScaler motorScalerRight = new MotorScaler();
+    public Location location = new Location(0.0, 0.0, 0.0);
     
     public DriveWithJoysticks() {
         // Use requires() here to declare subsystem dependencies
@@ -30,7 +33,13 @@ public class DriveWithJoysticks extends CommandBase {
         // LogDebugger.log("Execution! >:D");
         double rightSpeed = motorScalerRight.scale(oi.rightUpDown());
         //double speed = oi.topUpDown();
-        theDrive.goVariable(leftSpeed, rightSpeed);
+        theDrive.goVariable(leftSpeed, rightSpeed); 
+        theDrive.updateDeadReckoner();
+        location = theDrive.getLocation();
+        SmartDashboard.putNumber("x", location.getXLocation());
+        SmartDashboard.putNumber("y", location.getYLocation());
+        SmartDashboard.putNumber("heading", location.getHeading());
+        
         
     }
 
