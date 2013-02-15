@@ -4,15 +4,12 @@
  */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.DigitalModule;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.DriveWithJoysticks;
-import edu.wpi.first.wpilibj.I2C;
 import team.util.DeadReckoner;
 import team.util.Location;
 
@@ -46,11 +43,7 @@ public class Drive extends Subsystem {
         
         leftWheelEncoder.start();
         rightWheelEncoder.start();
-        int count = 0;
-//      chat.write((int)'a', (int)'a');
-//      chat.write((int)'a', (int)'a');
-//      SmartDashboard.putNumber("Count", count++);
-        
+
         myLocation = new DeadReckoner(leftWheelEncoder, rightWheelEncoder);
         
 
@@ -61,6 +54,10 @@ public class Drive extends Subsystem {
     public Location getLocation(){
         return myLocation.getLocation();
         
+    }
+    
+    public void resetDeadReckoner() {
+        myLocation.resetPosition();
     }
     
      public void goVariable(double leftSpeed, double rightSpeed)

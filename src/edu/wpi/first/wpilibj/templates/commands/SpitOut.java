@@ -17,6 +17,8 @@ public class SpitOut extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        theScooperCollector.setCollectorMotor(-1.0);
+        theScooperCollector.setElevatorMotor(-1.0);
     }
 
     // Called repeatedly when this Command is scheduled to run

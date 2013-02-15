@@ -9,7 +9,6 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -46,6 +45,8 @@ public class Robot extends IterativeRobot {
         table.putBoolean("bool", true);
         table.putNumber("double", 3.1415927);
         table.putString("sring", "a string");
+        
+        LogDebugger.log("robot init!!!");
     }
 
     public void autonomousInit() {

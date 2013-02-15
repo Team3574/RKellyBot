@@ -16,7 +16,7 @@ public class TunePID extends CommandBase {
     public TunePID() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(thePizzaBoxTilt);
+//        requires(thePizzaBoxTilt);
 
         SmartDashboard.putNumber("P", 0.1);
         SmartDashboard.putNumber("I", 0.0);
@@ -32,13 +32,13 @@ public class TunePID extends CommandBase {
         } else {
             SmartDashboard.putNumber("PID Goal", 0.0);
         }
-        thePizzaBoxTilt.setSetpoint(SmartDashboard.getNumber("PID Goal"));
-        double multiplyer = SmartDashboard.getNumber("PID multiplyer");
-        thePizzaBoxTilt.setPID(
-                SmartDashboard.getNumber("P") * multiplyer,
-                SmartDashboard.getNumber("I") * multiplyer,
-                SmartDashboard.getNumber("D") * multiplyer
-            );
+//        thePizzaBoxTilt.setSetpoint(SmartDashboard.getNumber("PID Goal"));
+//        double multiplyer = SmartDashboard.getNumber("PID multiplyer");
+//        thePizzaBoxTilt.setPID(
+//                SmartDashboard.getNumber("P") * multiplyer,
+//                SmartDashboard.getNumber("I") * multiplyer,
+//                SmartDashboard.getNumber("D") * multiplyer
+//            );
     }
 
     // Called repeatedly when this Command is scheduled to run

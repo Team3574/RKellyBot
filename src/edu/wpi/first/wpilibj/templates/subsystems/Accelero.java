@@ -17,7 +17,7 @@ public class Accelero extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    public ADXL345_I2C accelerometer = RobotMap.accelerometer;
+//    public ADXL345_I2C accelerometer = RobotMap.accelerometer;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -26,15 +26,18 @@ public class Accelero extends Subsystem {
     }
     
     public double X() {
-        return accelerometer.getAcceleration(ADXL345_I2C.Axes.kX);
+//        return accelerometer.getAcceleration(ADXL345_I2C.Axes.kX);
+        return 0.0;
     }
 
     public double Y() {
-        return accelerometer.getAcceleration(ADXL345_I2C.Axes.kY);
+//        return accelerometer.getAcceleration(ADXL345_I2C.Axes.kY);
+        return 0.0;
     }
     
     public double Z() {
-        return accelerometer.getAcceleration(ADXL345_I2C.Axes.kZ);
+//        return accelerometer.getAcceleration(ADXL345_I2C.Axes.kZ);
+        return 0.0;
     }
     
     public void updateStatus () {

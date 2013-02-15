@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.ScooperCollector;
  */
 public class PickUp extends CommandBase {
     
+    
     public PickUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,6 +25,8 @@ public class PickUp extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        theScooperCollector.setCollectorMotor(1.0);
+        theScooperCollector.setElevatorMotor(1.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -2,38 +2,35 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.wpi.first.wpilibj.templates.commands;
+package edu.wpi.first.wpilibj.templates.commands.testCommands;
 
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.CommandBase;
+import team.util.DeadReckoner;
 
 /**
  *
  * @author team3574
  */
-public class SetTiltSetpoint extends CommandBase {
-
-    public SetTiltSetpoint() {
+public class ResetDeadReckoner extends CommandBase {
+    
+    public ResetDeadReckoner() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//        requires(thePizzaBoxTilt);
     }
-    
+
     // Called just before this Command runs the first time
     protected void initialize() {
-        
+        theDrive.resetDeadReckoner();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//        thePizzaBoxTilt.setSetpoint(100);
         
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -44,4 +41,5 @@ public class SetTiltSetpoint extends CommandBase {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
 }

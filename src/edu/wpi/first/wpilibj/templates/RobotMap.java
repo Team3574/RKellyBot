@@ -1,15 +1,12 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.ADXL345_I2C;
-import edu.wpi.first.wpilibj.Accelerometer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.templates.commands.SpitOut;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -18,17 +15,6 @@ import edu.wpi.first.wpilibj.templates.commands.SpitOut;
  * floating around.
  */
 public class RobotMap {
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static final int leftMotor = 1;
-    // public static final int rightMotor = 2;
-    // (Names subject to change.)
-   
-    // If you are using multiple modules, make sure to define both the port
-    // number and the module. For example you with a rangefinder:
-    // public static final int rangefinderPort = 1;
-    // public static final int rangefinderModule = 1;
-    
     //PWM
     public static Jaguar frontRightMotor = new Jaguar (1);
     public static Jaguar backRightMotor = new Jaguar (2);
@@ -62,6 +48,6 @@ public class RobotMap {
     public static Solenoid liftTheRobotLeft = new Solenoid (4);
     public static Solenoid liftTheRobotRight = new Solenoid (5);
     public static Solenoid shifterPort = new Solenoid (6);
-    
-    public static ADXL345_I2C accelerometer = new ADXL345_I2C(1, ADXL345_I2C.DataFormat_Range.k2G);
+// THIS IS CAUSING THE ENTIRE ROBOT NOT TO WORK.  DO NOT UNCOMMENT UNLESS YOU HAVE A LOT OF TIME ON YOUR HANDS    
+//    public static ADXL345_I2C accelerometer = new ADXL345_I2C(1, ADXL345_I2C.DataFormat_Range.k2G);
 }

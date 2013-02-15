@@ -29,6 +29,7 @@ public class PizzaBoxTilt extends PIDSubsystem {
     public PizzaBoxTilt() {
         super("PizzaBoxTilt", Kp, Ki, Kd);
         elevationEncoder.start();
+        LogDebugger.log("pizza box constructor");
       
 
         // Use these to get going:
@@ -70,5 +71,11 @@ public class PizzaBoxTilt extends PIDSubsystem {
         LogDebugger.log("changed setpoint");
         super.setSetpoint(setPoint);
         this.enable();
+    }
+    
+    public void manualGo(double speed){
+        elevationTalon.set(speed);
+        this.setSetpoint(elevationEncoder.get());
+      
     }
 }

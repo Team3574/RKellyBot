@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.InternalButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.CollectorDoNothing;
 import edu.wpi.first.wpilibj.templates.commands.DeployLifter;
 import edu.wpi.first.wpilibj.templates.commands.FlingerPyrimidSpeed;
 import edu.wpi.first.wpilibj.templates.commands.FlingerNormal;
@@ -15,12 +16,19 @@ import edu.wpi.first.wpilibj.templates.commands.FlingerOff;
 import edu.wpi.first.wpilibj.templates.commands.FlingerPowerSavingMode;
 import edu.wpi.first.wpilibj.templates.commands.LEDBlingControl;
 import edu.wpi.first.wpilibj.templates.commands.Lift;
+import edu.wpi.first.wpilibj.templates.commands.PickUp;
 import edu.wpi.first.wpilibj.templates.commands.Shift;
+import edu.wpi.first.wpilibj.templates.commands.SpitOut;
 import edu.wpi.first.wpilibj.templates.commands.StowArms;
+import edu.wpi.first.wpilibj.templates.commands.TiltDoNothing;
+import edu.wpi.first.wpilibj.templates.commands.TiltDown;
+import edu.wpi.first.wpilibj.templates.commands.TiltUp;
 import edu.wpi.first.wpilibj.templates.commands.testCommands.LogCommand;
+import edu.wpi.first.wpilibj.templates.commands.testCommands.ResetDeadReckoner;
 import edu.wpi.first.wpilibj.templates.commands.testCommands.TunePID;
 import edu.wpi.first.wpilibj.templates.subsystems.Bling;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
+import team.util.LogDebugger;
 import team.util.XboxController;
 
 /**
@@ -35,6 +43,7 @@ public class OI {
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
     
+    
     Joystick stick = new Joystick(1);
     Joystick otherStick = new Joystick(2);
     
@@ -44,18 +53,23 @@ public class OI {
 //    InternalButton bi3 = new InternalButton();
 //    InternalButton bi4 = new InternalButton();
     InternalButton pidTestButton = new InternalButton();
+    InternalButton resetLocation = new InternalButton();
     
     Button btnA = new JoystickButton(stick, XboxController.A);
     Button btnB = new JoystickButton(stick, XboxController.B);
     Button btnX = new JoystickButton(stick, XboxController.X);
     Button btnY = new JoystickButton(stick, XboxController.Y);
+    //Button btnLB = new JoystickButton(stick, XboxController.LB);
+    //Button commandTestLog = new JoystickButton(stick, XboxController.RB);
     Button btnLB = new JoystickButton(stick, XboxController.LB);
-    Button commandTestLog = new JoystickButton(stick, XboxController.RB);
+    Button btnRB = new JoystickButton(stick, XboxController.RB);
     Button btnOtherA = new JoystickButton(otherStick, XboxController.A);
     Button btnOtherB = new JoystickButton(otherStick, XboxController.B);
     Button btnOtherX = new JoystickButton(otherStick, XboxController.X);
     Button btnOtherY = new JoystickButton(otherStick, XboxController.Y);
     
+    Button btnOtherLB = new JoystickButton(otherStick, XboxController.LB);
+    Button btnOtherRB = new JoystickButton(otherStick, XboxController.RB);
     // Another type of button you can create is a DigitalIOButton, which is
     // a button or switch hooked up to the cypress module. These are useful if
     // you want to build a customized operator interface.
@@ -82,26 +96,37 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     
     public OI(){
+         LogDebugger.log("OI constructor");
         
-        commandTestLog.whenPressed(new LogCommand());
 //        bi1.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
 //        bi2.whenPressed(new LEDBlingControl(Bling.METEOR));
 //        bi3.whenPressed(new LEDBlingControl(Bling.SHOOT));
 //        bi4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
         pidTestButton.whenPressed(new TunePID());
+        resetLocation.whenPressed(new ResetDeadReckoner());
+        //commandTestLog.whenPressed(new LogCommand())
       
         btnA.whenPressed(new FlingerNormal());
         btnB.whenPressed(new FlingerOff());
         btnX.whenPressed(new FlingerPowerSavingMode());
+        btnLB.whenPressed(new PickUp());
+        btnLB.whenReleased(new CollectorDoNothing());
+        btnRB.whenActive(new SpitOut());
+        btnRB.whenInactive(new CollectorDoNothing());
 //        btnA.whenPressed(new Lift());
-//         btnB.whenPressed(new DeployLifter());
+//        btnB.whenPressed(new DeployLifter());
 //        btnX.whenPressed(new StowArms());
         btnY.whenPressed(new FlingerPyrimidSpeed());
-        btnLB.whenPressed(new Shift());
+        //btnLB.whenPressed(new Shift());
         btnOtherA.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
         btnOtherB.whenPressed(new LEDBlingControl(Bling.METEOR));
         btnOtherX.whenPressed(new LEDBlingControl(Bling.SHOOT));
         btnOtherY.whenPressed(new LEDBlingControl(Bling.FADE_PG));
+        btnOtherLB.whenPressed(new TiltUp());
+        btnOtherLB.whenReleased(new TiltDoNothing());
+        btnOtherRB.whenPressed(new TiltDown());
+        btnOtherRB.whenReleased(new TiltDoNothing());
+
         
         //SmartDashboard.putData("Command Test Log", commandTestLog);
 //        SmartDashboard.putData("MARCH_RWB", bi1);
@@ -109,6 +134,7 @@ public class OI {
 //        SmartDashboard.putData("SHOOT", bi3);
 //        SmartDashboard.putData("FADE_PG", bi4);
         SmartDashboard.putData("Tune PID", pidTestButton);
+        SmartDashboard.putData("Reset Location", resetLocation);
         
 //        SmartDashboard.putData("MARCH_RWB", bi1);
 //        SmartDashboard.putData("METEOR", bi2);
