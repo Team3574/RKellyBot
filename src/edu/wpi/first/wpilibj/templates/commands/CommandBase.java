@@ -34,7 +34,7 @@ public abstract class CommandBase extends Command {
     public static Shifter theShifter = new Shifter ();
     public static Accelero theAccelerometer = new Accelero();
     public static Bling theBling = new Bling();
-   // public static PizzaBoxTilt thePizzaBoxTilt = new PizzaBoxTilt();
+    public static PizzaBoxTilt thePizzaBoxTilt = new PizzaBoxTilt();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
@@ -52,7 +52,7 @@ public abstract class CommandBase extends Command {
         SmartDashboard.putData(thePizzaBox);
         SmartDashboard.putData(theScooperCollector);
         SmartDashboard.putData(theShifter);
-        //SmartDashboard.putData(thePizzaBoxTilt);
+        SmartDashboard.putData(thePizzaBoxTilt);
         
 
         // Show what command your subsystem is running on the SmartDashboard

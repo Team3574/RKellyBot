@@ -23,12 +23,15 @@ void loop() {
   //meteor(20);
   //delay(500);
   
+  showPattern = 0;
   switch(showPattern)
   {
    case 0: meteor(20); showPattern = -1; break;
+   //case 0: rainbowCycle(3); showPattern = -1; break;
    case 1: fadePurpleGold(); showPattern = -1; break;
    case 2: marchRedWhiteBlue(); showPattern = -1; break;
    case 3: shootColor(strip.Color(155, 0, 255)); showPattern = -1; break;
+  // case 4: rainbowCycle(3); showPattern = -1; break;
   default:    solidColor(strip.Color(0, 0, 0));
   strip.show(); showPattern = -1; break;
 

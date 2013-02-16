@@ -12,7 +12,7 @@ public class TiltDoNothing extends CommandBase {
     
     public TiltDoNothing() {
         // Use requires() here to declare subsystem dependencies
-//       requires(thePizzaBoxTilt);
+       requires(thePizzaBoxTilt);
     }
 
     // Called just before this Command runs the first time
@@ -21,6 +21,7 @@ public class TiltDoNothing extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+//        System.out.println("Tilt Do Nothing" + 0.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

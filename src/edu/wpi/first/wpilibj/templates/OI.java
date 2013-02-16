@@ -45,17 +45,8 @@ public class OI {
     
     
     Joystick stick = new Joystick(1);
-    Joystick otherStick = new Joystick(2);
     
-    
-//    InternalButton bi1 = new InternalButton();
-//    InternalButton bi2 = new InternalButton();
-//    InternalButton bi3 = new InternalButton();
-//    InternalButton bi4 = new InternalButton();
-    InternalButton pidTestButton = new InternalButton();
-    InternalButton resetLocation = new InternalButton();
-    
-    Button btnA = new JoystickButton(stick, XboxController.A);
+     Button btnA = new JoystickButton(stick, XboxController.A);
     Button btnB = new JoystickButton(stick, XboxController.B);
     Button btnX = new JoystickButton(stick, XboxController.X);
     Button btnY = new JoystickButton(stick, XboxController.Y);
@@ -63,13 +54,26 @@ public class OI {
     //Button commandTestLog = new JoystickButton(stick, XboxController.RB);
     Button btnLB = new JoystickButton(stick, XboxController.LB);
     Button btnRB = new JoystickButton(stick, XboxController.RB);
+    Button btnLSC = new JoystickButton(stick, XboxController.LeftStickClick);
+    
+    Joystick otherStick = new Joystick(2);
+    
     Button btnOtherA = new JoystickButton(otherStick, XboxController.A);
     Button btnOtherB = new JoystickButton(otherStick, XboxController.B);
     Button btnOtherX = new JoystickButton(otherStick, XboxController.X);
     Button btnOtherY = new JoystickButton(otherStick, XboxController.Y);
-    
     Button btnOtherLB = new JoystickButton(otherStick, XboxController.LB);
     Button btnOtherRB = new JoystickButton(otherStick, XboxController.RB);
+    
+    InternalButton bi1 = new InternalButton();
+    InternalButton bi2 = new InternalButton();
+    InternalButton bi3 = new InternalButton();
+    InternalButton bi4 = new InternalButton();
+    InternalButton pidTestButton = new InternalButton();
+    InternalButton resetLocation = new InternalButton();
+    
+   
+   
     // Another type of button you can create is a DigitalIOButton, which is
     // a button or switch hooked up to the cypress module. These are useful if
     // you want to build a customized operator interface.
@@ -97,27 +101,20 @@ public class OI {
     
     public OI(){
          LogDebugger.log("OI constructor");
-        
-//        bi1.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
-//        bi2.whenPressed(new LEDBlingControl(Bling.METEOR));
-//        bi3.whenPressed(new LEDBlingControl(Bling.SHOOT));
-//        bi4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
-        pidTestButton.whenPressed(new TunePID());
-        resetLocation.whenPressed(new ResetDeadReckoner());
-        //commandTestLog.whenPressed(new LogCommand())
-      
+         
         btnA.whenPressed(new FlingerNormal());
         btnB.whenPressed(new FlingerOff());
         btnX.whenPressed(new FlingerPowerSavingMode());
-        btnLB.whenPressed(new PickUp());
-        btnLB.whenReleased(new CollectorDoNothing());
-        btnRB.whenActive(new SpitOut());
-        btnRB.whenInactive(new CollectorDoNothing());
 //        btnA.whenPressed(new Lift());
 //        btnB.whenPressed(new DeployLifter());
 //        btnX.whenPressed(new StowArms());
         btnY.whenPressed(new FlingerPyrimidSpeed());
-        //btnLB.whenPressed(new Shift());
+        btnLB.whenPressed(new PickUp());
+        btnLB.whenReleased(new CollectorDoNothing());
+        btnRB.whenActive(new SpitOut());
+        btnRB.whenInactive(new CollectorDoNothing());
+        btnLSC.whenPressed(new Shift());
+        
         btnOtherA.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
         btnOtherB.whenPressed(new LEDBlingControl(Bling.METEOR));
         btnOtherX.whenPressed(new LEDBlingControl(Bling.SHOOT));
@@ -126,20 +123,22 @@ public class OI {
         btnOtherLB.whenReleased(new TiltDoNothing());
         btnOtherRB.whenPressed(new TiltDown());
         btnOtherRB.whenReleased(new TiltDoNothing());
-
         
+        bi1.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
+        bi2.whenPressed(new LEDBlingControl(Bling.METEOR));
+        bi3.whenPressed(new LEDBlingControl(Bling.SHOOT));
+        bi4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
+        pidTestButton.whenPressed(new TunePID());
+        resetLocation.whenPressed(new ResetDeadReckoner());
+        //commandTestLog.whenPressed(new LogCommand())
+      
         //SmartDashboard.putData("Command Test Log", commandTestLog);
-//        SmartDashboard.putData("MARCH_RWB", bi1);
-//        SmartDashboard.putData("METEOR", bi2);
-//        SmartDashboard.putData("SHOOT", bi3);
-//        SmartDashboard.putData("FADE_PG", bi4);
         SmartDashboard.putData("Tune PID", pidTestButton);
         SmartDashboard.putData("Reset Location", resetLocation);
-        
-//        SmartDashboard.putData("MARCH_RWB", bi1);
-//        SmartDashboard.putData("METEOR", bi2);
-//        SmartDashboard.putData("SHOOT", bi3);
-//        SmartDashboard.putData("FADE_PG", bi4);
+        SmartDashboard.putData("MARCH_RWB", bi1);
+        SmartDashboard.putData("METEOR", bi2);
+        SmartDashboard.putData("SHOOT", bi3);
+        SmartDashboard.putData("FADE_PG", bi4);
         SmartDashboard.putData("flinger Normal", new FlingerNormal());
         SmartDashboard.putData("flinger power saving mode", new FlingerPowerSavingMode());
         SmartDashboard.putData("Flinger off", new FlingerOff());

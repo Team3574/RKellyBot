@@ -17,7 +17,7 @@ public class SetTiltSetpoint extends CommandBase {
     public SetTiltSetpoint() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//        requires(thePizzaBoxTilt);
+        requires(thePizzaBoxTilt);
     }
     
     // Called just before this Command runs the first time
@@ -27,7 +27,7 @@ public class SetTiltSetpoint extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//        thePizzaBoxTilt.setSetpoint(100);
+        thePizzaBoxTilt.setSetpoint(100);
         
     }
 

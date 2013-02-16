@@ -68,14 +68,21 @@ public class PizzaBoxTilt extends PIDSubsystem {
     
     public void setSetpoint (double setPoint) {
         this.getPIDController().reset();
-        LogDebugger.log("changed setpoint");
+//        LogDebugger.log("changed setpoint");
         super.setSetpoint(setPoint);
         this.enable();
     }
     
     public void manualGo(double speed){
+        this.disable();
+        
         elevationTalon.set(speed);
         this.setSetpoint(elevationEncoder.get());
+        
+        SmartDashboard.putNumber("Tilt/Elevation Value", elevationTalon.get());
+        LogDebugger.log("Manual Go!");
+        
+        this.enable();
       
     }
 }

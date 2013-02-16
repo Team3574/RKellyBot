@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -31,15 +32,16 @@ public class RobotMap {
     public static Encoder rightWheelEncoder = new Encoder (3, 4, true);
     public static Encoder tiltingEncoder = new Encoder (7, 8, true);
     
-    public static DigitalInput collectSenPort1 = new DigitalInput (9);
-    public static DigitalInput collectSenPort2 = new DigitalInput (10);
-    public static DigitalInput collectSenPort3 = new DigitalInput (11);
+    public static DigitalInput collectSenPort1 = new DigitalInput (12);
+    public static DigitalInput collectSenPort2 = new DigitalInput (13);
+    public static DigitalInput collectSenPort3 = new DigitalInput (14);
      
     //Analog inputs 
     
     
     //Compressor (use relay)
-    public static Compressor airCompressor = new Compressor (14, 1);
+    public static Compressor airCompressor = new Compressor (10, 1);
+    public static Relay compRelay = new Relay (4);
 
     //Solenoid (use Pneumatics)
     public static Solenoid kickingPort = new Solenoid (1);
