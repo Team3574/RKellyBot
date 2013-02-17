@@ -18,8 +18,8 @@ public class DeployLifter extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        theLifter.placeArmLeft();
-        theLifter.placeArmRight();
+        theLifter.deployArmLeft();
+        theLifter.deployArmRight();
     }
 
     // Called repeatedly when this Command is scheduled to run
