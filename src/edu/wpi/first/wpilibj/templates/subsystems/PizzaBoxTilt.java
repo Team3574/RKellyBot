@@ -22,13 +22,13 @@ public class PizzaBoxTilt extends PIDSubsystem {
     private static final double Ki = 0.001;
     private static final double Kd = 0.0;
     
-    Talon elevationTalon = RobotMap.tiltingTalon;
-    Encoder elevationEncoder = RobotMap.tiltingEncoder;
+    Talon tiltingTalon = RobotMap.tiltingTalon;
+    Encoder tiltingEncoder = RobotMap.tiltingEncoder;
 
     // Initialize your subsystem here
     public PizzaBoxTilt() {
         super("PizzaBoxTilt", Kp, Ki, Kd);
-        elevationEncoder.start();
+        tiltingEncoder.start();
         LogDebugger.log("pizza box constructor");
       
 
@@ -48,7 +48,7 @@ public class PizzaBoxTilt extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        int elevation = elevationEncoder.get();
+        int elevation = tiltingEncoder.get();
         SmartDashboard.putNumber("tilt encoder", elevation);
         return elevation;
     }
@@ -56,7 +56,7 @@ public class PizzaBoxTilt extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-        elevationTalon.set(output);
+        tiltingTalon.set(output);
         SmartDashboard.putNumber("Elevation Output", output);
     }
     
@@ -76,10 +76,10 @@ public class PizzaBoxTilt extends PIDSubsystem {
     public void manualGo(double speed){
         this.disable();
         
-        elevationTalon.set(speed);
-        this.setSetpoint(elevationEncoder.get());
+        tiltingTalon.set(speed);
+        this.setSetpoint(tiltingEncoder.get());
         
-        SmartDashboard.putNumber("Tilt/Elevation Value", elevationTalon.get());
+        SmartDashboard.putNumber("Tilt/Elevation Value", tiltingTalon.get());
         LogDebugger.log("Manual Go!");
         
         this.enable();

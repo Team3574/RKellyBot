@@ -45,21 +45,5 @@ public class MotorScaler {
             lastSpeed = input;
             return input;
         }
-        
-//        if (input - lastSpeed > 0.05){
-//            newSpeed = lastSpeed + maxChange;
-//            lastSpeed = newSpeed;
-//            return newSpeed;
-//        }
-//        else if (input - lastSpeed < -0.05){
-//            newSpeed = lastSpeed - maxChange;
-//            lastSpeed = newSpeed;
-//            return newSpeed;
-//        }
-//        else { //if we got here input - lastSpeed must be 0.
-//            lastSpeed = input;
-//            return input;
-//
-//        }
     }
 }

@@ -26,18 +26,20 @@ public class Lifter extends Subsystem {
         
     }
     
-    public void stowArms() {
-        positionArmLeft.set(false);     
-        positionArmRight.set(false);
+    public void stowLifterArms() {
         liftTheRobotLeft.set(false);
         liftTheRobotRight.set(false);
     }
+    public void stowDeployedArms(){
+        positionArmLeft.set(false);     
+        positionArmRight.set(false);
+    }
     
-    public void placeArmLeft() {
+    public void deployArmLeft() {
         positionArmLeft.set(true);
   
     }
-    public void placeArmRight(){
+    public void deployArmRight(){
         positionArmRight.set(true);
     }
     

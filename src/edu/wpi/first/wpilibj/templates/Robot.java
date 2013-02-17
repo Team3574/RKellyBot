@@ -80,7 +80,7 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         updateStatus();
         RobotMap.airCompressor.start();
-        SmartDashboard.putBoolean("Air Compressor Value", RobotMap.airCompressor.getPressureSwitchValue());
+        SmartDashboard.putBoolean("Air Compressor Full", RobotMap.airCompressor.getPressureSwitchValue());
     }
     
     public void disabledPeriodic(){

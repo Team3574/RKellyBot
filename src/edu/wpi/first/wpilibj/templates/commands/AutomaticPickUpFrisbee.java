@@ -4,37 +4,43 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.subsystems.Lifter;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.networktables2.client.NetworkTableClient;
 
 /**
  *
  * @author team3574
  */
-public class StowArms extends CommandBase {
+public class AutomaticPickUpFrisbee extends CommandBase {
+    private NetworkTable nt = NetworkTable.getTable("Vision");
+    private static final double NOTHING_FOUND = -10000.0;
     
-    public StowArms() {
+    double frisbeeOffsetX = 0.0;
+    double frisbeeOffsetY = 0.0;
+    
+    public AutomaticPickUpFrisbee() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires (theLifter);
-        this.setTimeout(0.5);
+        requires(theDrive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        theLifter.stowLifterArms();
-        
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (this.timeSinceInitialized() > 0.3){
-            theLifter.stowDeployedArms();
+        frisbeeOffsetX = nt.getNumber("frisbeeOffsetX", 0.0);
+        frisbeeOffsetY = nt.getNumber("frisbeeOffsetY", 0.0);
+        if (frisbeeOffsetX > NOTHING_FOUND) {
+//            theDrive.goVariable(frisbeeOffsetX, 0.0);
+            //TODO: impurment frisbee collector and the drive
         }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return this.isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true

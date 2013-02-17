@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.templates.commands.LEDBlingControl;
 import edu.wpi.first.wpilibj.templates.commands.Lift;
 import edu.wpi.first.wpilibj.templates.commands.PickUp;
 import edu.wpi.first.wpilibj.templates.commands.Shift;
+import edu.wpi.first.wpilibj.templates.commands.Shoot;
 import edu.wpi.first.wpilibj.templates.commands.SpitOut;
 import edu.wpi.first.wpilibj.templates.commands.StowArms;
 import edu.wpi.first.wpilibj.templates.commands.TiltDoNothing;
@@ -28,14 +29,19 @@ import edu.wpi.first.wpilibj.templates.commands.testCommands.ResetDeadReckoner;
 import edu.wpi.first.wpilibj.templates.commands.testCommands.TunePID;
 import edu.wpi.first.wpilibj.templates.subsystems.Bling;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
+import team.util.JoystickTrigger;
 import team.util.LogDebugger;
 import team.util.XboxController;
+import team.util.joystick.Axis;
+import team.util.joystick.AxisSide;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+    boolean speedScaleState = false;
+    boolean lastspeedScaleButtonState = false;
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -46,7 +52,7 @@ public class OI {
     
     Joystick stick = new Joystick(1);
     
-     Button btnA = new JoystickButton(stick, XboxController.A);
+    Button btnA = new JoystickButton(stick, XboxController.A);
     Button btnB = new JoystickButton(stick, XboxController.B);
     Button btnX = new JoystickButton(stick, XboxController.X);
     Button btnY = new JoystickButton(stick, XboxController.Y);
@@ -55,6 +61,8 @@ public class OI {
     Button btnLB = new JoystickButton(stick, XboxController.LB);
     Button btnRB = new JoystickButton(stick, XboxController.RB);
     Button btnLSC = new JoystickButton(stick, XboxController.LeftStickClick);
+    Button btnLT = new JoystickTrigger(stick, Axis.triggers, AxisSide.left);
+    Button btnRT = new JoystickTrigger(stick, Axis.triggers, AxisSide.right);
     
     Joystick otherStick = new Joystick(2);
     
@@ -64,6 +72,8 @@ public class OI {
     Button btnOtherY = new JoystickButton(otherStick, XboxController.Y);
     Button btnOtherLB = new JoystickButton(otherStick, XboxController.LB);
     Button btnOtherRB = new JoystickButton(otherStick, XboxController.RB);
+    Button btnOtherLT = new JoystickTrigger(otherStick, Axis.triggers, AxisSide.left);
+    Button btnOtherRT = new JoystickTrigger(otherStick, Axis.triggers, AxisSide.right);
     
     InternalButton bi1 = new InternalButton();
     InternalButton bi2 = new InternalButton();
@@ -101,24 +111,33 @@ public class OI {
     
     public OI(){
          LogDebugger.log("OI constructor");
-         
-        btnA.whenPressed(new FlingerNormal());
-        btnB.whenPressed(new FlingerOff());
-        btnX.whenPressed(new FlingerPowerSavingMode());
+   
 //        btnA.whenPressed(new Lift());
 //        btnB.whenPressed(new DeployLifter());
 //        btnX.whenPressed(new StowArms());
-        btnY.whenPressed(new FlingerPyrimidSpeed());
-        btnLB.whenPressed(new PickUp());
-        btnLB.whenReleased(new CollectorDoNothing());
-        btnRB.whenActive(new SpitOut());
-        btnRB.whenInactive(new CollectorDoNothing());
-        btnLSC.whenPressed(new Shift());
+//        btnLB.whenPressed(new PickUp());
+//        btnLB.whenReleased(new CollectorDoNothing());
+//        btnRB.whenActive(new SpitOut());
+//        btnRB.whenInactive(new CollectorDoNothing());
+        btnLT.whenPressed(new PickUp());
+        btnLT.whenReleased(new CollectorDoNothing());
+        btnRT.whenActive(new SpitOut());
+        btnRT.whenInactive(new CollectorDoNothing());
+        btnRB.whenReleased(new Shift());
+        btnX.whenPressed(new DeployLifter());
+        btnY.whenPressed(new Lift());
+        btnB.whenPressed(new StowArms());
         
-        btnOtherA.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
-        btnOtherB.whenPressed(new LEDBlingControl(Bling.METEOR));
-        btnOtherX.whenPressed(new LEDBlingControl(Bling.SHOOT));
-        btnOtherY.whenPressed(new LEDBlingControl(Bling.FADE_PG));
+      
+        btnOtherA.whenPressed(new FlingerNormal());
+        btnOtherB.whenPressed(new FlingerOff());
+        btnOtherX.whenPressed(new FlingerPowerSavingMode());
+        btnOtherY.whenPressed(new FlingerPyrimidSpeed());
+        btnOtherRT.whenPressed(new Shoot());
+//        btnOtherA.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
+//        btnOtherB.whenPressed(new LEDBlingControl(Bling.METEOR));
+//        btnOtherX.whenPressed(new LEDBlingControl(Bling.SHOOT));
+//        btnOtherY.whenPressed(new LEDBlingControl(Bling.FADE_PG));
         btnOtherLB.whenPressed(new TiltUp());
         btnOtherLB.whenReleased(new TiltDoNothing());
         btnOtherRB.whenPressed(new TiltDown());
@@ -156,5 +175,21 @@ public class OI {
         SmartDashboard.putNumber("Stick Axis Right", stick.getRawAxis(5));
         return stick.getRawAxis(5);   
     }
+    
+    public double getSpeedScale() {
+        boolean buttonState = stick.getRawButton(XboxController.LB);
+        
+        if (lastspeedScaleButtonState && !buttonState){
+            speedScaleState = !speedScaleState; 
+        }
+        this.lastspeedScaleButtonState = buttonState; 
+        if (this.speedScaleState) {
+            return 0.8;
+        } else {
+            return 1.0;
+        }
+    }
+
+    
 }
 
