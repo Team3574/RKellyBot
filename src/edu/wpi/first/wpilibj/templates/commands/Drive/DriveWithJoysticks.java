@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.wpi.first.wpilibj.templates.commands;
+package edu.wpi.first.wpilibj.templates.commands.Drive;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import team.util.Location;
 import team.util.LogDebugger;
 import team.util.MotorScaler;
@@ -29,9 +30,9 @@ public class DriveWithJoysticks extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double leftSpeed = motorScalerLeft.scale(oi.leftUpDown() * oi.getSpeedScale());
+        double leftSpeed = motorScalerLeft.scale(oi.leftUpDown());
         // LogDebugger.log("Execution! >:D");
-        double rightSpeed = motorScalerRight.scale(oi.rightUpDown() * oi.getSpeedScale());
+        double rightSpeed = motorScalerRight.scale(oi.rightUpDown());
         //double speed = oi.topUpDown();
         theDrive.goVariable(leftSpeed, rightSpeed); 
         theDrive.updateDeadReckoner();

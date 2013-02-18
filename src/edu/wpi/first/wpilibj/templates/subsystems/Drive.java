@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.DriveWithJoysticks;
+import edu.wpi.first.wpilibj.templates.commands.Drive.DriveWithJoysticks;
 import team.util.DeadReckoner;
 import team.util.Location;
 
@@ -27,6 +27,9 @@ public class Drive extends Subsystem {
     Encoder leftWheelEncoder = RobotMap.leftWheelEncoder;
     Encoder rightWheelEncoder = RobotMap.rightWheelEncoder;
     
+    double scaler = 1; 
+    
+            
     DeadReckoner myLocation;
     //RobotDrive robotDrive = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
     
@@ -63,13 +66,22 @@ public class Drive extends Subsystem {
      public void goVariable(double leftSpeed, double rightSpeed)
     {
        //robotDrive.tankDrive(leftSpeed, rightSpeed);
-       frontLeftMotor.set(leftSpeed); 
-       backLeftMotor.set(leftSpeed); 
-       frontRightMotor.set(-rightSpeed);
-       backRightMotor.set(-rightSpeed);
+       frontLeftMotor.set(leftSpeed * scaler); 
+       backLeftMotor.set(leftSpeed * scaler); 
+       frontRightMotor.set(-rightSpeed * scaler);
+       backRightMotor.set(-rightSpeed * scaler);
        
        SmartDashboard.putNumber("Left Encoder", leftWheelEncoder.get());
        SmartDashboard.putNumber("Right Encoder", rightWheelEncoder.get());
        
+    }
+    public void shiftScale() {
+
+        if (scaler == 1.0) {
+            scaler = 0.8;
+        } else {
+            scaler = 1.0;
+        }
+
     }
 }

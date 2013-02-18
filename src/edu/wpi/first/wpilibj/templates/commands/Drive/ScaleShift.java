@@ -2,27 +2,25 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.wpi.first.wpilibj.templates.commands.Flinger;
+package edu.wpi.first.wpilibj.templates.commands.Drive;
+
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
-import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
+import edu.wpi.first.wpilibj.templates.commands.CommandBase;
+
 /**
  *
  * @author team3574
  */
-public class FlingerOff extends CommandBase {
+public class ScaleShift extends CommandBase {
     
-    public FlingerOff() {
+    public ScaleShift() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(theFlinger);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        
-        theFlinger.setSetpoint(Flinger.OFF);        
-        theFlinger.enable();
- 
+        theDrive.shiftScale();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,6 +30,7 @@ public class FlingerOff extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return true;
+        
     }
 
     // Called once after isFinished returns true

@@ -69,8 +69,8 @@ public class Flinger extends PIDSubsystem {
         this.lastSpeed = speed;
         this.lastSpinnerCount = currnetSpinnerCount;
         
-        SmartDashboard.putNumber("Flinger Encoder Speed", speed/650);        
-        return speed/650;        
+        SmartDashboard.putNumber("Flinger Encoder Speed", speed);        
+        return speed;        
     }
     
     protected void usePIDOutput(double output) {
@@ -85,7 +85,8 @@ public class Flinger extends PIDSubsystem {
     }
     
     public void setSetpoint (double setPoint) {
+	super.getPIDController().reset();
         super.setSetpoint(setPoint);
-        this.getPIDController().reset();
+	this.enable();
     }
 }

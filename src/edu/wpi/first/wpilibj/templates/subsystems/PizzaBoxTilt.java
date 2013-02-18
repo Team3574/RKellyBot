@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.SetTiltSetpoint;
+import edu.wpi.first.wpilibj.templates.commands.testCommands.TunePID;
 import team.util.LogDebugger;
 
 /**
@@ -41,7 +41,7 @@ public class PizzaBoxTilt extends PIDSubsystem {
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new SetTiltSetpoint());
+//        setDefaultCommand(new TunePID());
     }
     
     protected double returnPIDInput() {
@@ -84,5 +84,10 @@ public class PizzaBoxTilt extends PIDSubsystem {
         
         this.enable();
       
+    }
+
+    public void updateStatus() {
+//	SmartDashboard.putNumber("tilt encoder", elevation);
+//	SmartDashboard.putNumber("Elevation Output", output);
     }
 }
