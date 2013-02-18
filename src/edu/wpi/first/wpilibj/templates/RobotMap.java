@@ -27,7 +27,7 @@ public class RobotMap {
     public static Talon collectorTalon = new Talon (8);
     
     //Digital IO
-    public static Encoder spinnerEncoder = new Encoder (5, 6, true);
+    public static Encoder spinnerEncoder = new Encoder (5, 6);
     public static Encoder leftWheelEncoder = new Encoder (1, 2);
     public static Encoder rightWheelEncoder = new Encoder (3, 4, true);
     public static Encoder tiltingEncoder = new Encoder (7, 8, true);
@@ -49,7 +49,7 @@ public class RobotMap {
     public static Solenoid positionArmRight = new Solenoid (3);
     public static Solenoid liftTheRobotLeft = new Solenoid (4);
     public static Solenoid liftTheRobotRight = new Solenoid (5);
-    public static Solenoid shifterPort = new Solenoid (6);
+    public static Solenoid shifterPort = new Solenoid (7);
 // THIS IS CAUSING THE ENTIRE ROBOT NOT TO WORK.  DO NOT UNCOMMENT UNLESS YOU HAVE A LOT OF TIME ON YOUR HANDS    
 //    public static ADXL345_I2C accelerometer = new ADXL345_I2C(1, ADXL345_I2C.DataFormat_Range.k2G);
 public RobotMap (){

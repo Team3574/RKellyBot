@@ -10,14 +10,15 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.CollectorDoNothing;
 import edu.wpi.first.wpilibj.templates.commands.DeployLifter;
-import edu.wpi.first.wpilibj.templates.commands.FlingerPyrimidSpeed;
-import edu.wpi.first.wpilibj.templates.commands.FlingerNormal;
-import edu.wpi.first.wpilibj.templates.commands.FlingerOff;
-import edu.wpi.first.wpilibj.templates.commands.FlingerPowerSavingMode;
+import edu.wpi.first.wpilibj.templates.commands.Flinger.FlingerPyrimidSpeed;
+import edu.wpi.first.wpilibj.templates.commands.Flinger.FlingerNormal;
+import edu.wpi.first.wpilibj.templates.commands.Flinger.FlingerOff;
+import edu.wpi.first.wpilibj.templates.commands.Flinger.FlingerPowerSavingMode;
 import edu.wpi.first.wpilibj.templates.commands.LEDBlingControl;
 import edu.wpi.first.wpilibj.templates.commands.Lift;
 import edu.wpi.first.wpilibj.templates.commands.PickUp;
-import edu.wpi.first.wpilibj.templates.commands.Shift;
+import edu.wpi.first.wpilibj.templates.commands.Drive.ScaleShift;
+import edu.wpi.first.wpilibj.templates.commands.Drive.Shift;
 import edu.wpi.first.wpilibj.templates.commands.Shoot;
 import edu.wpi.first.wpilibj.templates.commands.SpitOut;
 import edu.wpi.first.wpilibj.templates.commands.StowArms;
@@ -79,7 +80,6 @@ public class OI {
     InternalButton bi2 = new InternalButton();
     InternalButton bi3 = new InternalButton();
     InternalButton bi4 = new InternalButton();
-    InternalButton pidTestButton = new InternalButton();
     InternalButton resetLocation = new InternalButton();
     
    
@@ -127,6 +127,9 @@ public class OI {
         btnX.whenPressed(new DeployLifter());
         btnY.whenPressed(new Lift());
         btnB.whenPressed(new StowArms());
+        btnLB.whenPressed(new ScaleShift());
+        
+        
         
       
         btnOtherA.whenPressed(new FlingerNormal());
@@ -147,12 +150,10 @@ public class OI {
         bi2.whenPressed(new LEDBlingControl(Bling.METEOR));
         bi3.whenPressed(new LEDBlingControl(Bling.SHOOT));
         bi4.whenPressed(new LEDBlingControl(Bling.FADE_PG));
-        pidTestButton.whenPressed(new TunePID());
         resetLocation.whenPressed(new ResetDeadReckoner());
         //commandTestLog.whenPressed(new LogCommand())
       
         //SmartDashboard.putData("Command Test Log", commandTestLog);
-        SmartDashboard.putData("Tune PID", pidTestButton);
         SmartDashboard.putData("Reset Location", resetLocation);
         SmartDashboard.putData("MARCH_RWB", bi1);
         SmartDashboard.putData("METEOR", bi2);
@@ -162,6 +163,7 @@ public class OI {
         SmartDashboard.putData("flinger power saving mode", new FlingerPowerSavingMode());
         SmartDashboard.putData("Flinger off", new FlingerOff());
         SmartDashboard.putData("flinger Pyramid mode", new FlingerPyrimidSpeed());
+	SmartDashboard.putData("Tune PID", new TunePID());
         
         
     }
@@ -175,21 +177,6 @@ public class OI {
         SmartDashboard.putNumber("Stick Axis Right", stick.getRawAxis(5));
         return stick.getRawAxis(5);   
     }
-    
-    public double getSpeedScale() {
-        boolean buttonState = stick.getRawButton(XboxController.LB);
-        
-        if (lastspeedScaleButtonState && !buttonState){
-            speedScaleState = !speedScaleState; 
-        }
-        this.lastspeedScaleButtonState = buttonState; 
-        if (this.speedScaleState) {
-            return 0.8;
-        } else {
-            return 1.0;
-        }
-    }
-
     
 }
 

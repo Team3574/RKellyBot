@@ -98,5 +98,6 @@ public class Robot extends IterativeRobot {
     public void updateStatus(){
         CommandBase.theScooperCollector.updateStatus();
         CommandBase.theAccelerometer.updateStatus();
+	CommandBase.thePizzaBoxTilt.updateStatus(); 
     }
 }
