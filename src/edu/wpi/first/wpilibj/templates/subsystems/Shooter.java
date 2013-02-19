@@ -8,19 +8,24 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
  * @author team3574
  */
-public class PizzaBox extends Subsystem {
+public class Shooter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    Solenoid kickingPort = RobotMap.kickingPort;
+    Solenoid shooterArm = RobotMap.shooterArm;
 //    Talon elevationTalon = RobotMap.tiltingTalon;
 //    Encoder elevationEncoder = RobotMap.tiltingEncoder;
+    
+    public Shooter(){
+	LiveWindow.addActuator("Shooter", "shooter arm", shooterArm);
+    }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -28,11 +33,11 @@ public class PizzaBox extends Subsystem {
     }
     
     public void kickerOut(){
-        kickingPort.set(true);
+        shooterArm.set(true);
     }
     
     public void kickerIn(){
-        kickingPort.set(false);
+        shooterArm.set(false);
     }
     
 //    public void angleUp(){

@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
@@ -18,6 +19,11 @@ public class Shifter extends Subsystem {
     Solenoid shifterPort = RobotMap.shifterPort;
     
     int gear = 1;
+    
+    //initilize subsystem here
+    public Shifter(){
+	LiveWindow.addActuator("Shifter", "Shifter Port", shifterPort);
+    }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

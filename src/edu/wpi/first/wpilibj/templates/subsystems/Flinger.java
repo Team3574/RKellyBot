@@ -10,8 +10,10 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import team.util.EncoderSmooth;
 import team.util.LogDebugger;
 import team.util.PIDCalculate;
 
@@ -20,7 +22,7 @@ import team.util.PIDCalculate;
  * @author team3574
  */
 public class Flinger extends PIDSubsystem {
-    Encoder spinnerEncoder = RobotMap.spinnerEncoder;
+    EncoderSmooth spinnerEncoder = RobotMap.spinnerEncoder;
     Jaguar spinnerMotor = RobotMap.spinnerMotor;
     private double lastSpeed = 0.0;
     private double lastSpinnerCount = 0.0;
@@ -35,17 +37,21 @@ public class Flinger extends PIDSubsystem {
             PYRIMID_SPEED = 0.5,
             POWER_SAVING_MODE = 0.2,
             OFF = 0;
-
+    
     // Initialize your subsystem here
     public Flinger() {
         super("FlingerMotor", Kp, Ki, Kd, Kf);
-        
+        spinnerEncoder.setSmoothWeightFactor(10.0);
+	spinnerEncoder.setScaleFactor(120.0);
         spinnerEncoder.start();
         
         LogDebugger.log("Flinger Started!");
         
         this.setSetpoint(0.0);
-        
+	
+	LiveWindow.addSensor("Flinger", "encoder", spinnerEncoder);
+        LiveWindow.addActuator("Flinger", "motor", spinnerMotor);
+        LiveWindow.addActuator("Flinger", "PID", getPIDController());
         //enable();
 
         // Use these to get going:
@@ -63,14 +69,8 @@ public class Flinger extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        double currnetSpinnerCount = spinnerEncoder.get();
-        double reading = currnetSpinnerCount - this.lastSpinnerCount;
-        double speed = ((lastSpeed * weightFactor) + reading)/(weightFactor + 1);
-        this.lastSpeed = speed;
-        this.lastSpinnerCount = currnetSpinnerCount;
-        
-        SmartDashboard.putNumber("Flinger Encoder Speed", speed/650);        
-        return speed/650;        
+        spinnerEncoder.update(); 
+	return spinnerEncoder.getRate();
     }
     
     protected void usePIDOutput(double output) {

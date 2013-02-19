@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import team.util.LogDebugger;
+import team.util.XboxController;
 
 
 /**
@@ -48,6 +50,10 @@ public class Robot extends IterativeRobot {
         table.putString("sring", "a string");
         
         LogDebugger.log("robot init!!!");
+	
+	LiveWindow.addActuator("compressor", "alt relay", RobotMap.compRelay);
+	LiveWindow.addActuator("compressor", "act compressor", RobotMap.airCompressor);
+	LiveWindow.addSensor("compressor", "sensor compressor", RobotMap.airCompressor);
     }
 
     public void autonomousInit() {
@@ -80,19 +86,47 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         updateStatus();
         RobotMap.airCompressor.start();
+	
         SmartDashboard.putBoolean("Air Compressor Full", RobotMap.airCompressor.getPressureSwitchValue());
     }
     
     public void disabledPeriodic(){
         updateStatus();
     }
-    
+    Joystick j = new Joystick(1);
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
         LiveWindow.run();
         updateStatus();
+	if (j.getRawButton(XboxController.A)){
+	    RobotMap.shifterPort.set(true);
+	}else {
+	    RobotMap.shifterPort.set(false);
+	}
+	
+	if (j.getRawButton(XboxController.B)){
+	    RobotMap.shooterArm.set(true);
+	}else {
+	    RobotMap.shooterArm.set(false);
+	}
+	
+	if (j.getRawButton(XboxController.X)){
+	    RobotMap.liftTheRobotLeft.set(true);
+	    RobotMap.liftTheRobotRight.set(true);
+	}else {
+	    RobotMap.liftTheRobotLeft.set(false);
+	    RobotMap.liftTheRobotRight.set(false);
+	}
+	
+	if (j.getRawButton(XboxController.Y)){
+	    RobotMap.positionArmLeft.set(true);
+	    RobotMap.positionArmRight.set(true);
+	}else {
+	    RobotMap.positionArmLeft.set(false);
+	    RobotMap.positionArmRight.set(false);
+	}
     }
     
     public void updateStatus(){

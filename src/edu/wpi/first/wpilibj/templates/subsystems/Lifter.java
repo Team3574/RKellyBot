@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
@@ -15,47 +16,57 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class Lifter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+
     Solenoid positionArmLeft = RobotMap.positionArmLeft;
     Solenoid positionArmRight = RobotMap.positionArmRight;
     Solenoid liftTheRobotLeft = RobotMap.liftTheRobotLeft;
     Solenoid liftTheRobotRight = RobotMap.liftTheRobotRight;
+
+    public Lifter(){
+	LiveWindow.addActuator("Lifter", "arm left", positionArmLeft);
+	LiveWindow.addActuator("Lifter", "arm right", positionArmRight);
+	LiveWindow.addActuator("Lifter", "lift left", liftTheRobotLeft);
+	LiveWindow.addActuator("Lifter", "lift right", liftTheRobotRight);
+	
+    }
     
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-        
+	// Set the default command for a subsystem here.
+	//setDefaultCommand(new MySpecialCommand());
     }
-    
+
     public void stowLifterArms() {
-        liftTheRobotLeft.set(false);
-        liftTheRobotRight.set(false);
+	liftTheRobotLeft.set(false);
+	liftTheRobotRight.set(false);
     }
-    public void stowDeployedArms(){
-        positionArmLeft.set(false);     
-        positionArmRight.set(false);
+
+    public void stowDeployedArms() {
+	positionArmLeft.set(false);
+	positionArmRight.set(false);
     }
-    
+
     public void deployArmLeft() {
-        positionArmLeft.set(true);
-  
+	positionArmLeft.set(true);
+
     }
-    public void deployArmRight(){
-        positionArmRight.set(true);
+
+    public void deployArmRight() {
+	positionArmRight.set(true);
     }
-    
+
     public void liftArmLeft() {
-        liftTheRobotLeft.set(true);
+	liftTheRobotLeft.set(true);
     }
-    
+
     public void liftArmRight() {
-        liftTheRobotRight.set(true);
+	liftTheRobotRight.set(true);
     }
-    
+
     public boolean getPlaced() {
-        if (positionArmLeft.get() && positionArmRight.get()){
-            return true;
-        } else {
-            return false;
-        } 
+	if (positionArmLeft.get() && positionArmRight.get()) {
+	    return true;
+	} else {
+	    return false;
+	}
     }
 }

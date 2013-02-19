@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
@@ -18,6 +19,10 @@ public class Accelero extends Subsystem {
     // here. Call these from Commands.
     
 //    public ADXL345_I2C accelerometer = RobotMap.accelerometer;
+    
+    public Accelero(){
+//	LiveWindow.add("Accelero", "accelerometer", accelerometer);	
+    }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

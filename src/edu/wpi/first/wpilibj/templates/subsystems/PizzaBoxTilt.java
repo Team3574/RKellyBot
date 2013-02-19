@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.testCommands.TunePID;
@@ -30,6 +31,10 @@ public class PizzaBoxTilt extends PIDSubsystem {
         super("PizzaBoxTilt", Kp, Ki, Kd);
         tiltingEncoder.start();
         LogDebugger.log("pizza box constructor");
+	
+	LiveWindow.addSensor("PizzaBoxTilt", "encoder", tiltingEncoder);
+	LiveWindow.addActuator("PizzaBoxTilt", "tilting", tiltingTalon);
+	LiveWindow.addActuator("PizzaBoxTilt", "PID", getPIDController());
       
 
         // Use these to get going:
