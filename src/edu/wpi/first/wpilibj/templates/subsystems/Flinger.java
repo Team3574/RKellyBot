@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Jaguar;
@@ -24,6 +25,9 @@ import team.util.PIDCalculate;
 public class Flinger extends PIDSubsystem {
     EncoderSmooth spinnerEncoder = RobotMap.spinnerEncoder;
     Jaguar spinnerMotor = RobotMap.spinnerMotor;
+    
+    
+    
     private double lastSpeed = 0.0;
     private double lastSpinnerCount = 0.0;
     private double weightFactor = 10.0;
@@ -52,6 +56,7 @@ public class Flinger extends PIDSubsystem {
 	LiveWindow.addSensor("Flinger", "encoder", spinnerEncoder);
         LiveWindow.addActuator("Flinger", "motor", spinnerMotor);
         LiveWindow.addActuator("Flinger", "PID", getPIDController());
+	
         //enable();
 
         // Use these to get going:
@@ -64,6 +69,9 @@ public class Flinger extends PIDSubsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    
+    
     
     protected double returnPIDInput() {
         // Return your input value for the PID loop

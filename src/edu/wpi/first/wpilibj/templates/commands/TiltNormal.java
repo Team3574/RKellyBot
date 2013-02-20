@@ -8,15 +8,16 @@ package edu.wpi.first.wpilibj.templates.commands;
  *
  * @author team3574
  */
-public class TiltDoNothing extends CommandBase {
+public class TiltNormal extends CommandBase {
     
-    public TiltDoNothing() {
+    public TiltNormal() {
         // Use requires() here to declare subsystem dependencies
        requires(thePizzaBoxTilt);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+	thePizzaBoxTilt.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run

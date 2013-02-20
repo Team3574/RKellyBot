@@ -23,8 +23,8 @@ public class TiltUp extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//        thePizzaBoxTilt.manualGo(1.0);
-        thePizzaBoxTilt.setSetpoint(thePizzaBoxTilt.getSetpoint()+100);
+//        thePizzaBoxTilt.manualGo(0.5);
+        thePizzaBoxTilt.setSetpoint(thePizzaBoxTilt.getSetpoint()+10);
 //        System.out.println("Tilt Up" + 1.0);
     }
 

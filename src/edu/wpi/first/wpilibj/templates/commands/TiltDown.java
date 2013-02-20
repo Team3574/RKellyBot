@@ -24,9 +24,9 @@ public class TiltDown extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//        thePizzaBoxTilt.manualGo(-1.0);
-        thePizzaBoxTilt.setSetpoint(thePizzaBoxTilt.getSetpoint()-100);
- //       System.out.println("Tilt Down" + thePizzaBoxTilt.manualGo(speed));
+//        thePizzaBoxTilt.manualGo(-0.5);
+        thePizzaBoxTilt.setSetpoint(thePizzaBoxTilt.getSetpoint()-10);
+//       System.out.println("Tilt Down" + thePizzaBoxTilt.manualGo(speed));
     }
 
     // Make this return true when this Command no longer needs to run execute()

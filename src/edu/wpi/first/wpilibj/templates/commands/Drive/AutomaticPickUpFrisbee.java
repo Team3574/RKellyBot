@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.wpi.first.wpilibj.templates.commands;
+package edu.wpi.first.wpilibj.templates.commands.Drive;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.networktables2.client.NetworkTableClient;
+import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 
 /**
  *
@@ -34,7 +35,7 @@ public class AutomaticPickUpFrisbee extends CommandBase {
         frisbeeOffsetY = nt.getNumber("frisbeeOffsetY", 0.0);
         if (frisbeeOffsetX > NOTHING_FOUND) {
 //            theDrive.goVariable(frisbeeOffsetX, 0.0);
-            //TODO: impurment frisbee collector and the drive
+            //TODO: implement frisbee collector and the drive
         }
     }
 

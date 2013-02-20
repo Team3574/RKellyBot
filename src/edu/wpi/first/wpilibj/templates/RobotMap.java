@@ -29,21 +29,28 @@ public class RobotMap {
     public static Talon collectorTalon = new Talon (8);
     
     //Digital IO
-    public static EncoderSmooth spinnerEncoder = new EncoderSmooth (5, 6);
-    public static Encoder leftWheelEncoder = new Encoder (1, 2);
-    public static Encoder rightWheelEncoder = new Encoder (3, 4, true);
-    public static Encoder tiltingEncoder = new Encoder (7, 8, true);
+    public static Encoder leftWheelEncoder = new Encoder (9, 10);
+    public static Encoder rightWheelEncoder = new Encoder (11, 12, true);
+
+    public static Encoder tiltingEncoder = new Encoder (5, 6);
+    public static EncoderSmooth spinnerEncoder = new EncoderSmooth (7, 8);
+
+    // TODO: figure out where to plug these in
+//    public static DigitalInput collectSenPort1 = new DigitalInput (12);
+//    public static DigitalInput collectSenPort2 = new DigitalInput (13);
+//    public static DigitalInput collectSenPort3 = new DigitalInput (14);
     
-    public static DigitalInput collectSenPort1 = new DigitalInput (12);
-    public static DigitalInput collectSenPort2 = new DigitalInput (13);
-    public static DigitalInput collectSenPort3 = new DigitalInput (14);
-     
+    //the limit switches for the shooter
+
+    public static DigitalInput shooterZero = new DigitalInput(1);
+    public static DigitalInput shooterSeventy = new DigitalInput(3);
+    
     //Analog inputs 
     
     
     //Compressor (use relay)
-    public static Compressor airCompressor = new Compressor (10, 1);
-    public static Relay compRelay = new Relay (4);
+    public static Compressor airCompressor = new Compressor (2, 1);
+    public static Relay compRelay = new Relay (5);
 
     //Solenoid (use Pneumatics)
     public static Solenoid shooterArm = new Solenoid (1);

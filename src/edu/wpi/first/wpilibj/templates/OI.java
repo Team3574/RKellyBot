@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.templates.commands.Drive.Shift;
 import edu.wpi.first.wpilibj.templates.commands.Shoot;
 import edu.wpi.first.wpilibj.templates.commands.SpitOut;
 import edu.wpi.first.wpilibj.templates.commands.StowArms;
-import edu.wpi.first.wpilibj.templates.commands.TiltDoNothing;
+import edu.wpi.first.wpilibj.templates.commands.TiltNormal;
 import edu.wpi.first.wpilibj.templates.commands.TiltDown;
 import edu.wpi.first.wpilibj.templates.commands.TiltUp;
 import edu.wpi.first.wpilibj.templates.commands.testCommands.LogCommand;
@@ -41,8 +41,8 @@ import team.util.joystick.AxisSide;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    boolean speedScaleState = false;
-    boolean lastspeedScaleButtonState = false;
+//    boolean speedScaleState = false;
+//    boolean lastspeedScaleButtonState = false;
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -142,9 +142,9 @@ public class OI {
 //        btnOtherX.whenPressed(new LEDBlingControl(Bling.SHOOT));
 //        btnOtherY.whenPressed(new LEDBlingControl(Bling.FADE_PG));
         btnOtherLB.whenPressed(new TiltUp());
-        btnOtherLB.whenReleased(new TiltDoNothing());
+        btnOtherLB.whenReleased(new TiltNormal());
         btnOtherRB.whenPressed(new TiltDown());
-        btnOtherRB.whenReleased(new TiltDoNothing());
+        btnOtherRB.whenReleased(new TiltNormal());
         
         bi1.whenPressed(new LEDBlingControl(Bling.MARCH_RWB));
         bi2.whenPressed(new LEDBlingControl(Bling.METEOR));

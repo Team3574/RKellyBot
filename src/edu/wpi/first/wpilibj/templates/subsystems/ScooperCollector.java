@@ -23,15 +23,15 @@ public class ScooperCollector extends Subsystem {
     Talon moverUpperTalon = RobotMap.moverUpperTalon;
     Talon collectorTalon = RobotMap.collectorTalon;
     
-    DigitalInput collectSenPort1 = RobotMap.collectSenPort1;
-    DigitalInput collectSenPort2 = RobotMap.collectSenPort2;
-    DigitalInput collectSenPort3 = RobotMap.collectSenPort3;
+//    DigitalInput collectSenPort1 = RobotMap.collectSenPort1;
+//    DigitalInput collectSenPort2 = RobotMap.collectSenPort2;
+//    DigitalInput collectSenPort3 = RobotMap.collectSenPort3;
     
         //initilize subsystem here
     public ScooperCollector(){
-	LiveWindow.addSensor("ScooperCollector", "sensor port 1", collectSenPort1);
-	LiveWindow.addSensor("ScooperCollector", "sensor port 2", collectSenPort2);
-	LiveWindow.addSensor("ScooperCollector", "sensor port 3", collectSenPort3);
+//	LiveWindow.addSensor("ScooperCollector", "sensor port 1", collectSenPort1);
+//	LiveWindow.addSensor("ScooperCollector", "sensor port 2", collectSenPort2);
+//	LiveWindow.addSensor("ScooperCollector", "sensor port 3", collectSenPort3);
 	LiveWindow.addActuator("ScooperCollector", "Move up", moverUpperTalon);
 	LiveWindow.addActuator("ScooperCollector", "Collector", collectorTalon);
     }
@@ -52,15 +52,18 @@ public class ScooperCollector extends Subsystem {
     }
     
     public boolean isPresentSensor1() {
-        return collectSenPort1.get();
+//        return collectSenPort1.get();
+	return true;
     }
     
     public boolean isPresentSensor2() {
-        return collectSenPort2.get();
+//        return collectSenPort2.get();
+	return true;
     }
     
     public boolean isPresentSensor3() {
-        return collectSenPort3.get();
+//        return collectSenPort3.get();
+	return true;
     }
     
     public void updateStatus(){
