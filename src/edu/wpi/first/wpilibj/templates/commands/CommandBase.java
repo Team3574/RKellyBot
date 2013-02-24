@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Accelero;
 import edu.wpi.first.wpilibj.templates.subsystems.Drive;
 import edu.wpi.first.wpilibj.templates.subsystems.Flinger;
 import edu.wpi.first.wpilibj.templates.subsystems.Bling;
-import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
+import edu.wpi.first.wpilibj.templates.subsystems.ShootingRam;
 import edu.wpi.first.wpilibj.templates.subsystems.Lifter;
 import edu.wpi.first.wpilibj.templates.subsystems.PizzaBoxTilt;
 import edu.wpi.first.wpilibj.templates.subsystems.ScooperCollector;
@@ -28,7 +28,7 @@ public abstract class CommandBase extends Command {
     //public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static Drive theDrive = new Drive ();
     public static Flinger theFlinger = new Flinger ();
-    public static Shooter thePizzaBox = new Shooter ();
+    public static ShootingRam thePizzaBox = new ShootingRam ();
     public static Lifter theLifter = new Lifter ();
     public static ScooperCollector theScooperCollector = new ScooperCollector ();
     public static Shifter theShifter = new Shifter ();

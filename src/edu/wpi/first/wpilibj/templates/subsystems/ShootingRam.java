@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  *
  * @author team3574
  */
-public class Shooter extends Subsystem {
+public class ShootingRam extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -23,7 +23,7 @@ public class Shooter extends Subsystem {
 //    Talon elevationTalon = RobotMap.tiltingTalon;
 //    Encoder elevationEncoder = RobotMap.tiltingEncoder;
     
-    public Shooter(){
+    public ShootingRam(){
 	LiveWindow.addActuator("Shooter", "shooter arm", shooterArm);
     }
     

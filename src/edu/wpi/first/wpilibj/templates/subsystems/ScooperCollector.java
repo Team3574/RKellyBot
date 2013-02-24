@@ -18,20 +18,18 @@ import edu.wpi.first.wpilibj.templates.commands.CollectorDoNothing;
  * @author team3574
  */
 public class ScooperCollector extends Subsystem {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
     Talon moverUpperTalon = RobotMap.moverUpperTalon;
     Talon collectorTalon = RobotMap.collectorTalon;
     
-//    DigitalInput collectSenPort1 = RobotMap.collectSenPort1;
-//    DigitalInput collectSenPort2 = RobotMap.collectSenPort2;
-//    DigitalInput collectSenPort3 = RobotMap.collectSenPort3;
+    DigitalInput collectSenPort1 = RobotMap.collectSenPort1;
+    DigitalInput collectSenPort2 = RobotMap.collectSenPort2;
+    DigitalInput collectSenPort3 = RobotMap.collectSenPort3;
     
         //initilize subsystem here
     public ScooperCollector(){
-//	LiveWindow.addSensor("ScooperCollector", "sensor port 1", collectSenPort1);
-//	LiveWindow.addSensor("ScooperCollector", "sensor port 2", collectSenPort2);
-//	LiveWindow.addSensor("ScooperCollector", "sensor port 3", collectSenPort3);
+	LiveWindow.addSensor("ScooperCollector", "sensor port 1", collectSenPort1);
+	LiveWindow.addSensor("ScooperCollector", "sensor port 2", collectSenPort2);
+	LiveWindow.addSensor("ScooperCollector", "sensor port 3", collectSenPort3);
 	LiveWindow.addActuator("ScooperCollector", "Move up", moverUpperTalon);
 	LiveWindow.addActuator("ScooperCollector", "Collector", collectorTalon);
     }
