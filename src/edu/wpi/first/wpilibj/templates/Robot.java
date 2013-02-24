@@ -51,9 +51,9 @@ public class Robot extends IterativeRobot {
         
         LogDebugger.log("robot init!!!");
 	
-	LiveWindow.addActuator("compressor", "alt relay", RobotMap.compRelay);
-	LiveWindow.addActuator("compressor", "act compressor", RobotMap.airCompressor);
-	LiveWindow.addSensor("compressor", "sensor compressor", RobotMap.airCompressor);
+//	LiveWindow.addActuator("compressor", "alt relay", RobotMap.testCompRelay);
+//	LiveWindow.addActuator("compressor", "act compressor", RobotMap.airCompressor);
+//	LiveWindow.addSensor("compressor", "sensor compressor", RobotMap.airCompressor);
     }
 
     public void autonomousInit() {
@@ -75,8 +75,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         //autonomousCommand.cancel();
-        RobotMap.compRelay.set(Relay.Value.kOn);
-        RobotMap.compRelay.set(Relay.Value.kForward);
+        RobotMap.testCompRelay.set(Relay.Value.kOn);
+        RobotMap.testCompRelay.set(Relay.Value.kForward);
     }
 
     /**

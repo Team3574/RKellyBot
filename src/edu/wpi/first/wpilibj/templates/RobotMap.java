@@ -35,10 +35,10 @@ public class RobotMap {
     public static Encoder tiltingEncoder = new Encoder (5, 6);
     public static EncoderSmooth spinnerEncoder = new EncoderSmooth (7, 8);
 
-    // TODO: figure out where to plug these in
-//    public static DigitalInput collectSenPort1 = new DigitalInput (12);
-//    public static DigitalInput collectSenPort2 = new DigitalInput (13);
-//    public static DigitalInput collectSenPort3 = new DigitalInput (14);
+    // TODO: note these do not yet exist in production bot!!
+    public static DigitalInput collectSenPort1 = new DigitalInput (4);
+    public static DigitalInput collectSenPort2 = new DigitalInput (13);
+    public static DigitalInput collectSenPort3 = new DigitalInput (14);
     
     //the limit switches for the shooter
 
@@ -50,7 +50,7 @@ public class RobotMap {
     
     //Compressor (use relay)
     public static Compressor airCompressor = new Compressor (2, 1);
-    public static Relay compRelay = new Relay (5);
+    public static Relay testCompRelay = new Relay (5);
 
     //Solenoid (use Pneumatics)
     public static Solenoid shooterArm = new Solenoid (1);
@@ -59,7 +59,9 @@ public class RobotMap {
     public static Solenoid liftTheRobotLeft = new Solenoid (4);
     public static Solenoid liftTheRobotRight = new Solenoid (5);
     public static Solenoid shifterPort = new Solenoid (7);
-// THIS IS CAUSING THE ENTIRE ROBOT NOT TO WORK.  DO NOT UNCOMMENT UNLESS YOU HAVE A LOT OF TIME ON YOUR HANDS    
+    
+// THIS IS CAUSING THE ENTIRE ROBOT NOT TO WORK.  DO NOT UNCOMMENT UNLESS YOU HAVE A LOT OF TIME ON YOUR HANDS 
+//    seems to work again, just advise proceed with caution
 //    public static ADXL345_I2C accelerometer = new ADXL345_I2C(1, ADXL345_I2C.DataFormat_Range.k2G);
 
     public RobotMap () {
